@@ -264,17 +264,22 @@ function renderStoryTimeline(story) {
     }
 }
 
-/* Render Gallery (Normal Grid Layout for Photos & Videos) */
+/* Render Gallery (Images Only — Videos Filtered Out) */
 function renderGalleryGrid(gallery) {
     const grid = document.getElementById('gallery-grid');
     if (!grid) return;
 
-    grid.innerHTML = gallery.map((item, index) => {
-        const isVideo = item.type === 'video';
+    // Filter to retain ONLY image assets
+    const imagesOnly = (gallery || []).filter(item => {
+        if (item.type === 'video') return false;
+        if (item.src && /\.(mp4|mov|webm|m4v)$/i.test(item.src)) return false;
+        return true;
+    });
+
+    grid.innerHTML = imagesOnly.map((item, index) => {
         return `
             <div class="gallery-item" onclick="openLightbox(${index})">
                 <img src="${item.thumb || item.src}" alt="${item.caption || 'Wedding Photo'}" class="gallery-img" loading="lazy">
-                ${isVideo ? '<div class="gallery-video-badge"><i class="fas fa-play" style="margin-left:3px;"></i></div>' : ''}
                 <div class="gallery-overlay">
                     <div class="gallery-caption">${item.caption || ''}</div>
                 </div>
@@ -554,7 +559,11 @@ let currentGalleryItems = [];
 let currentLightboxIndex = 0;
 
 function initLightbox(galleryItems) {
-    currentGalleryItems = galleryItems;
+    currentGalleryItems = (galleryItems || []).filter(item => {
+        if (item.type === 'video') return false;
+        if (item.src && /\.(mp4|mov|webm|m4v)$/i.test(item.src)) return false;
+        return true;
+    });
 
     const modal = document.getElementById('lightbox-modal');
     const closeBtn = document.querySelector('.lightbox-close-btn');

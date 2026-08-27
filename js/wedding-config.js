@@ -132,7 +132,7 @@ window.WEDDING_CONFIG = {
         ]
     },
 
-    // GALLERY — All 15 wedding photos & videos across the workspace
+    // GALLERY — Images only (Videos removed per user requirement)
     gallery: [
         {
             type: "image",
@@ -145,12 +145,6 @@ window.WEDDING_CONFIG = {
             src: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.57.45_PM.jpeg",
             thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.57.45_PM.jpeg",
             caption: "Precious Moments"
-        },
-        {
-            type: "video",
-            src: "assets/gallery/WhatsApp_Video_2026-08-27_at_2.00.15_PM.mp4",
-            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_2.03.30_PM.jpeg",
-            caption: "A Beautiful Memory"
         },
         {
             type: "image",
@@ -181,18 +175,6 @@ window.WEDDING_CONFIG = {
             src: "assets/gallery/WhatsApp_Image_2026-08-27_at_2.07.51_PM.jpeg",
             thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_2.07.51_PM.jpeg",
             caption: "Forever Begins Here"
-        },
-        {
-            type: "video",
-            src: "assets/gallery/WhatsApp_Video_2026-08-21_at_7.43.49_PM.mp4",
-            thumb: "assets/gallery/WhatsApp_Image_2026-08-21_at_7.43.36_PM.jpeg",
-            caption: "Wedding Celebration Highlights"
-        },
-        {
-            type: "video",
-            src: "assets/gallery/WhatsApp_Video_2026-08-27_at_11.39.53_AM.mp4",
-            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_11.56.12_AM.jpeg",
-            caption: "Cinematic Wedding Intro Video"
         },
         {
             type: "image",
