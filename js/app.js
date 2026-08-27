@@ -398,7 +398,7 @@ function initCountdownTimer(targetDateIso) {
         if (diff <= 0) {
             bannerEl.innerHTML = `
                 <div class="section-subtitle" style="color: var(--gold-light); letter-spacing:0.2em;">NIKKAH CEREMONY</div>
-                <div class="countdown-arrived" style="margin-top:16px;">OUR NIKKAH DAY HAS ARRIVED ❤️</div>
+                <div class="countdown-arrived" style="margin-top:16px;">OUR WEDDING DAY HAS ARRIVED ❤️</div>
             `;
             return;
         }

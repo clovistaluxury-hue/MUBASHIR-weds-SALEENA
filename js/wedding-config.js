@@ -41,8 +41,8 @@ window.WEDDING_CONFIG = {
         whatsapp: "919876543212"
     },
 
-    // MAIN WEDDING DATE (Target for Countdown: Nikkah — 10 October 2026 at 12:00 PM IST)
-    weddingDateISO: "2026-10-10T12:00:00+05:30",
+    // MAIN WEDDING DATE (Target for Countdown: Wedding Day — 11 October 2026 at 12:00 PM IST)
+    weddingDateISO: "2026-10-11T12:00:00+05:30",
     weddingDateDisplay: "SATURDAY, 10 OCTOBER 2026",
 
     // EVENTS DETAILS (Chronological Order)
