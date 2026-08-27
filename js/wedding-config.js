@@ -1,6 +1,6 @@
 /**
  * WEDDING INVITATION CONFIGURATION
- * Edit all names, dates, venues, contact details, photos, and links in this single file.
+ * Single source of truth for all names, dates, venues, countdown, maps links, and contact details.
  */
 
 window.WEDDING_CONFIG = {
@@ -10,7 +10,8 @@ window.WEDDING_CONFIG = {
         poster: "assets/images/intro_poster.jpg",
         stillImage: "assets/images/hero_card_still.jpg",
         touchText: "TOUCH TO BEGIN",
-        subtitleText: "OUR STORY BEGINS HERE"
+        subtitleText: "OUR STORY BEGINS HERE",
+        transitionDurationSec: 1.8
     },
 
     // COUPLE INFORMATION
@@ -40,67 +41,61 @@ window.WEDDING_CONFIG = {
         whatsapp: "919876543212"
     },
 
-    // MAIN WEDDING DATE (Target for Countdown: YYYY-MM-DDTHH:MM:SS)
-    weddingDateISO: "2026-11-15T11:00:00",
-    weddingDateDisplay: "SUNDAY, 15 NOVEMBER 2026",
+    // MAIN WEDDING DATE (Target for Nikkah Countdown: YYYY-MM-DDTHH:MM:SS+05:30)
+    weddingDateISO: "2026-10-10T12:00:00+05:30",
+    weddingDateDisplay: "SATURDAY, 10 OCTOBER 2026",
 
-    // EVENTS DETAILS
+    // EVENTS DETAILS (Chronological Order)
     events: [
         {
-            id: "dhol",
-            title: "DHOL KI NIGHT",
-            date: "FRIDAY, 13 NOVEMBER 2026",
-            time: "07:00 PM ONWARDS",
-            venueName: "The Royal Palace Lawn",
-            venueAddress: "Grand Banquet Hall, 123 Heritage Road, Main City",
-            icon: "dhol",
-            startDateISO: "2026-11-13T19:00:00",
-            endDateISO: "2026-11-13T23:00:00",
-            mapUrl: "https://maps.google.com/?q=Grand+Banquet+Hall+123+Heritage+Road"
-        },
-        {
-            id: "nikah",
-            title: "NIKAH CEREMONY",
-            date: "SUNDAY, 15 NOVEMBER 2026",
-            time: "11:00 AM",
-            venueName: "Jamia Grand Masjid",
-            venueAddress: "Central Masjid Complex, Palace Road, City Center",
+            id: "nikkah",
+            title: "NIKKAH CEREMONY",
+            date: "SATURDAY, 10 OCTOBER 2026",
+            time: "12:00 PM",
+            venueName: "Josh Pavilion Auditorium",
+            venueAddress: "Thodupuzha",
+            fullLocationName: "@ Josh Pavilion Auditorium, Thodupuzha",
             icon: "nikah",
-            startDateISO: "2026-11-15T11:00:00",
-            endDateISO: "2026-11-15T14:00:00",
-            mapUrl: "https://maps.google.com/?q=Central+Masjid+Complex+Palace+Road"
+            startDateISO: "2026-10-10T12:00:00+05:30",
+            endDateISO: "2026-10-10T15:00:00+05:30",
+            mapUrl: "https://maps.app.goo.gl/J2fSJX9Qs9ds2DJF8?g_st=ic",
+            buttonText: "VIEW NIKKAH LOCATION"
         },
         {
             id: "reception",
             title: "WEDDING RECEPTION",
-            date: "SUNDAY, 15 NOVEMBER 2026",
-            time: "07:00 PM ONWARDS",
-            venueName: "The Imperial Grand Ballroom",
-            venueAddress: "Hotel Imperial, 456 Kings Avenue, City Center",
+            date: "SUNDAY, 11 OCTOBER 2026",
+            time: "1:00 PM",
+            venueName: "Salwa Regency",
+            venueAddress: "Salwa Regency",
+            fullLocationName: "@ Salwa Regency",
             icon: "reception",
-            startDateISO: "2026-11-15T19:00:00",
-            endDateISO: "2026-11-15T23:30:00",
-            mapUrl: "https://maps.google.com/?q=Hotel+Imperial+456+Kings+Avenue"
+            startDateISO: "2026-10-11T13:00:00+05:30",
+            endDateISO: "2026-10-11T17:00:00+05:30",
+            mapUrl: "https://maps.app.goo.gl/B69YArhzD7dkcd7V7?g_st=ic",
+            buttonText: "VIEW RECEPTION LOCATION"
         }
     ],
 
     // VENUE SECTION DETAILS
     venues: {
         nikah: {
-            title: "NIKAH CEREMONY",
-            name: "Jamia Grand Masjid",
-            addressLine1: "123, Central Mosque Street",
-            addressLine2: "City Center, State 000000",
-            mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.896683832812!2d77.5945627!3d12.9715987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzE3LjciTiA3N8KwMzUnNDAuNCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin",
-            directMapUrl: "https://maps.google.com"
+            title: "NIKKAH CEREMONY",
+            name: "Josh Pavilion Auditorium",
+            addressLine1: "Thodupuzha",
+            addressLine2: "Kerala, India",
+            mapEmbedUrl: "https://maps.google.com/maps?q=Josh+Pavilion+Auditorium+Thodupuzha&t=&z=15&ie=UTF8&iwloc=&output=embed",
+            directMapUrl: "https://maps.app.goo.gl/J2fSJX9Qs9ds2DJF8?g_st=ic",
+            buttonText: "VIEW NIKKAH LOCATION"
         },
         reception: {
             title: "WEDDING RECEPTION",
-            name: "The Imperial Grand Ballroom",
-            addressLine1: "456, Imperial Grand Avenue",
-            addressLine2: "Near City Mall, State 000000",
-            mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.896683832812!2d77.5945627!3d12.9715987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzE3LjciTiA3N8KwMzUnNDAuNCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin",
-            directMapUrl: "https://maps.google.com"
+            name: "Salwa Regency",
+            addressLine1: "Salwa Regency",
+            addressLine2: "Kerala, India",
+            mapEmbedUrl: "https://maps.google.com/maps?q=Salwa+Regency&t=&z=15&ie=UTF8&iwloc=&output=embed",
+            directMapUrl: "https://maps.app.goo.gl/B69YArhzD7dkcd7V7?g_st=ic",
+            buttonText: "VIEW RECEPTION LOCATION"
         },
         infoItems: [
             {
@@ -110,17 +105,17 @@ window.WEDDING_CONFIG = {
             },
             {
                 title: "LANDMARK",
-                text: "Near City Mall, Main Highway Road",
+                text: "Easily accessible from Thodupuzha main town center.",
                 icon: "landmark"
             },
             {
                 title: "ACCOMMODATION",
-                text: "Premium hotels available nearby for outstation guests.",
+                text: "Hotels available nearby for outstation guests.",
                 icon: "hotel"
             },
             {
                 title: "CONTACT",
-                text: "For any travel or venue assistance, feel free to call us anytime.",
+                text: "For any assistance or directions, feel free to call us.",
                 icon: "phone"
             }
         ]
@@ -172,7 +167,7 @@ window.WEDDING_CONFIG = {
         {
             src: "assets/images/gallery_dhol_night_1787810182626.png",
             thumb: "assets/images/gallery_dhol_night_1787810182626.png",
-            caption: "Festive Dhol Ki Night Celebrations"
+            caption: "Festive Celebrations"
         }
     ],
 

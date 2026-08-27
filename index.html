@@ -104,7 +104,7 @@
         </ul>
         <div style="text-align:center; padding-top:20px; border-top:1px solid var(--gold-border);">
             <div style="font-family:var(--font-heading); color:var(--gold-light); font-size:1.2rem;">Mubashir & Saleena</div>
-            <div style="font-size:0.75rem; color:var(--text-light-muted); margin-top:4px;">15 November 2026</div>
+            <div style="font-size:0.75rem; color:var(--text-light-muted); margin-top:4px;" class="dynamic-wedding-date">SATURDAY, 10 OCTOBER 2026</div>
         </div>
     </div>
 
@@ -119,11 +119,11 @@
         </section>
 
         <!-- ===================================================================
-             COUNTDOWN TIMER SECTION
+             COUNTDOWN TIMER SECTION (NIKKAH TARGET)
              =================================================================== -->
         <section class="countdown-banner">
             <div class="container" id="countdown-wrapper">
-                <div class="section-subtitle" style="color: var(--gold-light);">COUNTING DOWN TO FOREVER</div>
+                <div class="section-subtitle" style="color: var(--gold-light); letter-spacing:0.2em;">COUNTING DOWN TO OUR NIKKAH</div>
                 <div class="countdown-grid">
                     <div class="countdown-box">
                         <span class="countdown-val" id="cd-days">00</span>
@@ -141,6 +141,9 @@
                         <span class="countdown-val" id="cd-secs">00</span>
                         <span class="countdown-lbl">SECONDS</span>
                     </div>
+                </div>
+                <div style="font-family:var(--font-heading); font-size:1.2rem; color:var(--gold-light); margin-top:20px; letter-spacing:0.15em;">
+                    10 OCTOBER 2026 | 12:00 PM
                 </div>
             </div>
         </section>
@@ -163,11 +166,11 @@
                         As They Begin Their Journey Together
                     </p>
                     <div class="hero-date-badge dynamic-wedding-date" style="color: var(--text-main); border-color: var(--gold-primary); margin-top: 24px;">
-                        SUNDAY, 15 NOVEMBER 2026
+                        SATURDAY, 10 OCTOBER 2026
                     </div>
                 </div>
 
-                <!-- Event Cards Container -->
+                <!-- Event Cards Container (Chronological Order: Nikkah Ceremony -> Wedding Reception) -->
                 <div id="events" style="scroll-margin-top: 100px;"></div>
                 <div class="events-grid" id="events-cards-container">
                     <!-- Populated dynamically via app.js -->
@@ -198,15 +201,18 @@
                 <!-- Interactive Google Map Section -->
                 <div class="map-wrapper">
                     <iframe class="map-iframe" 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.896683832812!2d77.5945627!3d12.9715987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzE3LjciTiA3N8KwMzUnNDAuNCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+                        src="https://maps.google.com/maps?q=Josh+Pavilion+Auditorium+Thodupuzha&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                         allowfullscreen="" 
                         loading="lazy">
                     </iframe>
                 </div>
 
-                <div class="map-btn-bar">
-                    <a href="https://maps.google.com" target="_blank" class="btn-gold">
-                        <i class="fas fa-directions"></i> VIEW ON GOOGLE MAPS
+                <div class="map-btn-bar" style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+                    <a href="https://maps.app.goo.gl/J2fSJX9Qs9ds2DJF8?g_st=ic" target="_blank" class="btn-gold">
+                        <i class="fas fa-directions"></i> VIEW NIKKAH LOCATION
+                    </a>
+                    <a href="https://maps.app.goo.gl/B69YArhzD7dkcd7V7?g_st=ic" target="_blank" class="btn-gold-outline">
+                        <i class="fas fa-directions"></i> VIEW RECEPTION LOCATION
                     </a>
                 </div>
 

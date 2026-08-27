@@ -165,13 +165,12 @@ function initDynamicContent(config) {
     renderContactCards(config);
 }
 
-/* Render Events */
+/* Render Events (Chronological Order) */
 function renderEventCards(events) {
     const container = document.getElementById('events-cards-container');
     if (!container) return;
 
     const iconsMap = {
-        dhol: `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>`,
         nikah: `<svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`,
         reception: `<svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>`
     };
@@ -179,22 +178,22 @@ function renderEventCards(events) {
     container.innerHTML = events.map(evt => `
         <div class="event-card glass-card">
             <div class="event-icon-box">
-                ${iconsMap[evt.icon] || iconsMap.reception}
+                ${iconsMap[evt.icon] || iconsMap.nikah}
             </div>
             <h3 class="event-title">${evt.title}</h3>
             <div class="event-date-time">
                 ${evt.date}<br>
                 <span>${evt.time}</span>
             </div>
-            <div class="event-venue-name">${evt.venueName}</div>
+            <div class="event-venue-name">${evt.fullLocationName || ('@ ' + evt.venueName)}</div>
             <div class="event-venue-address">${evt.venueAddress}</div>
-            <div class="event-actions">
-                <button class="btn-gold-outline" onclick="downloadICS('${evt.id}')">
+            <div class="event-actions" style="flex-direction:column; align-items:center; gap:10px;">
+                <a href="${evt.mapUrl}" target="_blank" class="btn-gold" style="width:100%; font-size:0.78rem;">
+                    <i class="fas fa-map-marker-alt"></i> ${evt.buttonText || 'VIEW LOCATION'}
+                </a>
+                <button class="btn-gold-outline" style="width:100%; font-size:0.75rem;" onclick="downloadICS('${evt.id}')">
                     <i class="far fa-calendar-plus"></i> Add To Calendar
                 </button>
-                <a href="${evt.mapUrl}" target="_blank" class="btn-gold-outline">
-                    <i class="fas fa-map-marker-alt"></i> Location
-                </a>
             </div>
         </div>
     `).join('');
@@ -209,15 +208,21 @@ function renderVenueDetails(venues) {
     if (nikahBox && venues.nikah) {
         nikahBox.innerHTML = `
             <h3 class="event-title" style="font-size:1.5rem">${venues.nikah.title}</h3>
-            <p class="event-venue-name">${venues.nikah.name}</p>
-            <p class="event-venue-address">${venues.nikah.addressLine1}<br>${venues.nikah.addressLine2}</p>
+            <p class="event-venue-name">@ ${venues.nikah.name}</p>
+            <p class="event-venue-address">${venues.nikah.addressLine1}</p>
+            <a href="${venues.nikah.directMapUrl}" target="_blank" class="btn-gold-outline" style="margin-top:12px; font-size:0.75rem;">
+                <i class="fas fa-directions"></i> ${venues.nikah.buttonText || 'VIEW NIKKAH LOCATION'}
+            </a>
         `;
     }
     if (receptionBox && venues.reception) {
         receptionBox.innerHTML = `
             <h3 class="event-title" style="font-size:1.5rem">${venues.reception.title}</h3>
-            <p class="event-venue-name">${venues.reception.name}</p>
-            <p class="event-venue-address">${venues.reception.addressLine1}<br>${venues.reception.addressLine2}</p>
+            <p class="event-venue-name">@ ${venues.reception.name}</p>
+            <p class="event-venue-address">${venues.reception.addressLine1}</p>
+            <a href="${venues.reception.directMapUrl}" target="_blank" class="btn-gold-outline" style="margin-top:12px; font-size:0.75rem;">
+                <i class="fas fa-directions"></i> ${venues.reception.buttonText || 'VIEW RECEPTION LOCATION'}
+            </a>
         `;
     }
 
@@ -373,7 +378,7 @@ function initGoldParticles() {
 }
 
 /* ==========================================================================
-   3. COUNTDOWN TIMER
+   3. COUNTDOWN TIMER (NIKKAH TARGET: 10 OCT 2026, 12:00 PM IST)
    ========================================================================== */
 function initCountdownTimer(targetDateIso) {
     const daysEl = document.getElementById('cd-days');
@@ -391,7 +396,10 @@ function initCountdownTimer(targetDateIso) {
         const diff = targetDate - now;
 
         if (diff <= 0) {
-            bannerEl.innerHTML = `<div class="countdown-arrived">THE DAY HAS ARRIVED ❤️</div>`;
+            bannerEl.innerHTML = `
+                <div class="section-subtitle" style="color: var(--gold-light); letter-spacing:0.2em;">NIKKAH CEREMONY</div>
+                <div class="countdown-arrived" style="margin-top:16px;">OUR NIKKAH DAY HAS ARRIVED ❤️</div>
+            `;
             return;
         }
 
