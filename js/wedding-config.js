@@ -19,11 +19,11 @@ window.WEDDING_CONFIG = {
         firstName: "Mubashir",
         lastName: "Akber",
         fullName: "Mubashir Akber",
-        phone: "+91 70347 51528",
-        whatsapp: "917034751528",
+        phone: "+91 70345 15218",
+        whatsapp: "917034515218",
         familyContactName: "Mubashir's Family",
-        familyPhone: "+91 70347 51528",
-        familyWhatsapp: "917034751528"
+        familyPhone: "+91 70345 15218",
+        familyWhatsapp: "917034515218"
     },
     bride: {
         firstName: "Saleena",
