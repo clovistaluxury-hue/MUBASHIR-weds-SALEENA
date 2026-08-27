@@ -132,21 +132,8 @@ window.WEDDING_CONFIG = {
         ]
     },
 
-    // GALLERY — Images only
-    gallery: [
-        {
-            type: "image",
-            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.46.21_PM.jpeg",
-            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.46.21_PM.jpeg",
-            caption: "Together in Grace"
-        },
-        {
-            type: "image",
-            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.57.45_PM.jpeg",
-            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.57.45_PM.jpeg",
-            caption: "Precious Moments"
-        }
-    ],
+    // GALLERY — Completely removed per user requirement
+    gallery: [],
 
     // GIFTS CONFIGURATION
     gifts: {
