@@ -1,5 +1,5 @@
 /**
- * CINEMATIC SCROLL-CONTROLLED FRAME ANIMATION (46 FRAMES)
+ * TRUE SCROLL-TO-SCRUB 9:16 FRAME ANIMATION (46 FRAMES)
  * Couple: Mubashir Akber & Saleena
  * Placed immediately after RSVP section
  */
@@ -13,143 +13,210 @@
 
     const frameImages = [];
     let isLoaded = false;
-    let currentFrameIndex = 0;
+    let currentFrameIndex = 0; // 0 to 45 (Frame 1 to 46)
     let targetFrameIndex = 0;
-    let rafId = null;
 
-    let container, sticky, canvas, ctx, promptOverlay;
+    let section, wrapper, frame916, canvas, ctx, promptOverlay;
+    let isLocked = false;
+    let touchStartY = 0;
+    let lockScrollY = 0;
+    let accumulatedDelta = 0;
+    let exitThresholdCount = 0;
+    const SENSITIVITY = 22; // Scroll delta per frame step
 
     document.addEventListener('DOMContentLoaded', () => {
-        initScrollAnimation();
+        initScrollScrubAnimation();
     });
 
-    function initScrollAnimation() {
-        container = document.getElementById('scroll-animation-container');
-        sticky = document.getElementById('scroll-animation-sticky');
+    function initScrollScrubAnimation() {
+        section = document.getElementById('scroll-animation-section');
+        wrapper = document.getElementById('scroll-frame-wrapper');
+        frame916 = document.getElementById('scroll-frame-916');
         canvas = document.getElementById('scroll-canvas');
         promptOverlay = document.getElementById('scroll-prompt-overlay');
 
-        if (!container || !canvas) return;
+        if (!section || !canvas) return;
 
         ctx = canvas.getContext('2d');
 
-        // Set initial canvas sizing
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        // Preload all 46 frames
         preloadFrames(() => {
             isLoaded = true;
             renderFrame(0);
             startRenderLoop();
         });
 
-        // Listen for scroll
-        window.addEventListener('scroll', onScroll, { passive: true });
-    }
-
-    function getFramePath(index) {
-        const frameNum = String(index + 1).padStart(3, '0');
-        return `${FRAME_PATH_PREFIX}${frameNum}${FRAME_EXTENSION}`;
+        // Event Listeners for Lock & Scrub
+        window.addEventListener('scroll', checkSectionLock, { passive: true });
+        window.addEventListener('wheel', handleWheel, { passive: false });
+        window.addEventListener('touchstart', handleTouchStart, { passive: true });
+        window.addEventListener('touchmove', handleTouchMove, { passive: false });
     }
 
     function preloadFrames(onComplete) {
         let loadedCount = 0;
-
         for (let i = 0; i < TOTAL_FRAMES; i++) {
+            const num = String(i + 1).padStart(3, '0');
             const img = new Image();
-            img.src = getFramePath(i);
-
-            const handleLoad = () => {
+            img.src = `${FRAME_PATH_PREFIX}${num}${FRAME_EXTENSION}`;
+            const onLoad = () => {
                 loadedCount++;
-                if (loadedCount === 1 && i === 0) {
-                    // Frame 1 loaded, render immediately
-                    renderFrame(0);
-                }
-                if (loadedCount === TOTAL_FRAMES && onComplete) {
-                    onComplete();
-                }
+                if (loadedCount === 1) renderFrame(0);
+                if (loadedCount === TOTAL_FRAMES && onComplete) onComplete();
             };
-
-            img.onload = handleLoad;
-            img.onerror = handleLoad; // prevent stall if single image fails
+            img.onload = onLoad;
+            img.onerror = onLoad;
             frameImages[i] = img;
         }
     }
 
     function resizeCanvas() {
-        if (!canvas) return;
+        if (!canvas || !frame916) return;
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
-        canvas.width = window.innerWidth * dpr;
-        canvas.height = window.innerHeight * dpr;
-        if (isLoaded) {
-            renderFrame(Math.round(currentFrameIndex));
+        const rect = frame916.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        if (isLoaded) renderFrame(Math.round(currentFrameIndex));
+    }
+
+    function checkSectionLock() {
+        if (!section || isLocked) return;
+
+        const rect = section.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        const sectionCenter = rect.top + rect.height / 2;
+        const viewportCenter = viewportHeight / 2;
+
+        // When section center is near viewport center
+        if (Math.abs(sectionCenter - viewportCenter) < 60) {
+            lockSection();
         }
     }
 
-    function onScroll() {
-        if (!container) return;
+    function lockSection() {
+        if (isLocked) return;
+        isLocked = true;
+        lockScrollY = window.scrollY;
+        accumulatedDelta = 0;
+        exitThresholdCount = 0;
 
-        const rect = container.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-        const totalScrollableDistance = container.offsetHeight - viewportHeight;
+        if (wrapper) wrapper.classList.add('is-locked');
+        document.body.style.overflow = 'hidden';
+    }
 
-        if (totalScrollableDistance <= 0) return;
+    function unlockSection(direction) {
+        if (!isLocked) return;
+        isLocked = false;
+        accumulatedDelta = 0;
+        exitThresholdCount = 0;
 
-        // Current scroll position relative to container top
-        const scrolledDistance = -rect.top;
-        const rawProgress = scrolledDistance / totalScrollableDistance;
+        if (wrapper) wrapper.classList.remove('is-locked');
+        document.body.style.overflow = '';
 
-        // Clamp progress between 0.0 and 1.0
-        const progress = Math.max(0, Math.min(1, rawProgress));
+        // Resume page scroll smoothly
+        if (direction === 'down') {
+            const targetY = section.offsetTop + section.offsetHeight + 10;
+            window.scrollTo({ top: targetY, behavior: 'smooth' });
+        } else if (direction === 'up') {
+            const targetY = Math.max(0, section.offsetTop - window.innerHeight - 10);
+            window.scrollTo({ top: targetY, behavior: 'smooth' });
+        }
+    }
 
-        // Map progress to frame index 0 .. 45
-        targetFrameIndex = progress * (TOTAL_FRAMES - 1);
+    function handleWheel(e) {
+        if (!isLocked) {
+            checkSectionLock();
+            return;
+        }
 
-        // Fade prompt overlay out as scrolling starts
-        if (promptOverlay) {
-            if (progress > 0.02) {
-                promptOverlay.style.opacity = '0';
-                promptOverlay.style.pointerEvents = 'none';
+        e.preventDefault();
+        processDelta(e.deltaY);
+    }
+
+    function handleTouchStart(e) {
+        touchStartY = e.touches[0].clientY;
+        if (!isLocked) checkSectionLock();
+    }
+
+    function handleTouchMove(e) {
+        if (!isLocked) return;
+
+        e.preventDefault();
+        const touchY = e.touches[0].clientY;
+        const delta = (touchStartY - touchY) * 1.5; // Swipe up = scroll down
+        touchStartY = touchY;
+
+        processDelta(delta);
+    }
+
+    function processDelta(delta) {
+        accumulatedDelta += delta;
+
+        const steps = Math.trunc(accumulatedDelta / SENSITIVITY);
+        if (steps !== 0) {
+            accumulatedDelta -= steps * SENSITIVITY;
+            let newTarget = targetFrameIndex + steps;
+
+            if (newTarget >= TOTAL_FRAMES - 1) {
+                targetFrameIndex = TOTAL_FRAMES - 1;
+                if (steps > 0) {
+                    exitThresholdCount++;
+                    if (exitThresholdCount >= 3) {
+                        unlockSection('down');
+                        return;
+                    }
+                }
+            } else if (newTarget <= 0) {
+                targetFrameIndex = 0;
+                if (steps < 0) {
+                    exitThresholdCount++;
+                    if (exitThresholdCount >= 3) {
+                        unlockSection('up');
+                        return;
+                    }
+                }
             } else {
-                promptOverlay.style.opacity = '1';
+                targetFrameIndex = newTarget;
+                exitThresholdCount = 0;
             }
         }
+
+        if (promptOverlay && targetFrameIndex > 0.5) {
+            promptOverlay.style.opacity = '0';
+        } else if (promptOverlay && targetFrameIndex <= 0.5) {
+            promptOverlay.style.opacity = '1';
+        }
     }
 
-    // Smooth Lerp Render Loop (60 FPS)
     function startRenderLoop() {
         function loop() {
-            // Lerp towards target index for silky smooth animation
             const diff = targetFrameIndex - currentFrameIndex;
             if (Math.abs(diff) > 0.001) {
-                currentFrameIndex += diff * 0.18; // smooth easing factor
+                currentFrameIndex += diff * 0.35;
                 renderFrame(Math.round(currentFrameIndex));
             }
-
-            rafId = requestAnimationFrame(loop);
+            requestAnimationFrame(loop);
         }
         loop();
     }
 
     function renderFrame(index) {
         if (!ctx || !canvas) return;
-        const safeIndex = Math.max(0, Math.min(TOTAL_FRAMES - 1, index));
-        const img = frameImages[safeIndex];
-
+        const idx = Math.max(0, Math.min(TOTAL_FRAMES - 1, index));
+        const img = frameImages[idx];
         if (!img || !img.complete || img.naturalWidth === 0) return;
 
         const cw = canvas.width;
         const ch = canvas.height;
-        const imgW = img.naturalWidth;
-        const imgH = img.naturalHeight;
+        const iw = img.naturalWidth;
+        const ih = img.naturalHeight;
 
-        // Aspect ratio cover calculation
-        const imgRatio = imgW / imgH;
+        const imgRatio = iw / ih;
         const canvasRatio = cw / ch;
 
         let drawW, drawH, drawX, drawY;
-
         if (canvasRatio > imgRatio) {
             drawW = cw;
             drawH = cw / imgRatio;
