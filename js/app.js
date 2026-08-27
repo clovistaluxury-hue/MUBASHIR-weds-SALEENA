@@ -23,12 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Initialize Navigation & Mobile Drawer
     initNavigation();
 
-    // 7. Initialize Photo Gallery Carousel & Lightbox
-    if (window.initGalleryCarousel) {
-        window.initGalleryCarousel(config.gallery || []);
-    } else {
-        initLightbox(config.gallery || []);
-    }
+    // 7. Initialize Photo Gallery Grid & Lightbox
+    renderGalleryGrid(config.gallery || []);
+    initLightbox(config.gallery || []);
 
     // 8. Initialize RSVP System
     initRSVPSystem(config);
@@ -162,12 +159,8 @@ function initDynamicContent(config) {
     // Render Story Timeline
     renderStoryTimeline(config.story || {});
 
-    // Render Photo Gallery
-    if (window.initGalleryCarousel) {
-        window.initGalleryCarousel(config.gallery || []);
-    } else {
-        renderGalleryGrid(config.gallery || []);
-    }
+    // Render Photo Gallery Grid
+    renderGalleryGrid(config.gallery || []);
 
     // Render Contact Cards
     renderContactCards(config);
@@ -271,19 +264,23 @@ function renderStoryTimeline(story) {
     }
 }
 
-/* Render Gallery */
+/* Render Gallery (Normal Grid Layout for Photos & Videos) */
 function renderGalleryGrid(gallery) {
     const grid = document.getElementById('gallery-grid');
     if (!grid) return;
 
-    grid.innerHTML = gallery.map((item, index) => `
-        <div class="gallery-item" onclick="openLightbox(${index})">
-            <img src="${item.thumb}" alt="${item.caption || 'Wedding Photo'}" class="gallery-img" loading="lazy">
-            <div class="gallery-overlay">
-                <div class="gallery-caption">${item.caption || ''}</div>
+    grid.innerHTML = gallery.map((item, index) => {
+        const isVideo = item.type === 'video';
+        return `
+            <div class="gallery-item" onclick="openLightbox(${index})">
+                <img src="${item.thumb || item.src}" alt="${item.caption || 'Wedding Photo'}" class="gallery-img" loading="lazy">
+                ${isVideo ? '<div class="gallery-video-badge"><i class="fas fa-play" style="margin-left:3px;"></i></div>' : ''}
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">${item.caption || ''}</div>
+                </div>
             </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 /* Render Contact Cards */
@@ -600,11 +597,19 @@ function changeLightboxImage(dir) {
 }
 
 function updateLightboxContent() {
-    const img = document.getElementById('lightbox-img');
+    const container = document.getElementById('lightbox-media-container');
     const caption = document.getElementById('lightbox-caption');
     const item = currentGalleryItems[currentLightboxIndex];
-    if (img && item) {
-        img.src = item.src;
+
+    if (!container || !item) return;
+
+    if (item.type === 'video') {
+        container.innerHTML = `<video src="${item.src}" controls autoplay playsinline style="max-width:90vw; max-height:78vh; border-radius:8px; box-shadow:0 0 40px rgba(0,0,0,0.8); border:1px solid var(--gold-primary);"></video>`;
+    } else {
+        container.innerHTML = `<img id="lightbox-img" src="${item.src}" alt="${item.caption || 'Gallery Image'}" class="lightbox-img" style="max-width:90vw; max-height:78vh; object-fit:contain; border-radius:8px; border:1px solid var(--gold-primary); box-shadow:0 0 40px rgba(0,0,0,0.8);">`;
+    }
+
+    if (caption) {
         caption.textContent = item.caption || '';
     }
 }

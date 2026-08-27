@@ -252,39 +252,34 @@
             </div>
         </section>
 
-        <!-- PAGE 5 - PHOTO GALLERY - PREMIUM CAROUSEL -->
+        <!-- ===================================================================
+             PAGE 5 â€” PHOTO GALLERY (PRECIOUS MOMENTS)
+             =================================================================== -->
         <section id="gallery" class="section section-light">
             <div class="container">
                 <div class="section-header">
                     <div class="section-subtitle">MEMORIES &amp; GLIMPSES</div>
                     <h2 class="section-title">PRECIOUS MOMENTS</h2>
-                    <div class="ornamental-divider"><span class="ornamental-symbol">&#10022;</span></div>
+                    <div class="ornamental-divider"><span class="ornamental-symbol">â–</span></div>
                 </div>
-            </div>
-            <div class="gallery-carousel" id="gallery-carousel">
-                <div class="carousel-stage" id="carousel-stage"></div>
-                <button class="carousel-btn carousel-btn-prev" id="carousel-prev" aria-label="Previous">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="carousel-btn carousel-btn-next" id="carousel-next" aria-label="Next">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <div class="carousel-info-bar">
-                    <div class="carousel-caption" id="carousel-caption"></div>
-                    <div class="carousel-counter" id="carousel-counter">01 / 08</div>
+
+                <div class="gallery-grid" id="gallery-grid">
+                    <!-- Gallery Photos & Videos populated dynamically via app.js -->
                 </div>
-                <div class="carousel-thumbs" id="carousel-thumbs"></div>
             </div>
         </section>
 
-        <!-- GALLERY FULLSCREEN LIGHTBOX -->
-        <div id="gallery-lightbox" class="gallery-lightbox" role="dialog">
-            <button class="glb-close" id="glb-close" aria-label="Close"><i class="fas fa-times"></i></button>
-            <button class="glb-prev" id="glb-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
-            <button class="glb-next" id="glb-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
-            <div class="glb-media-wrap" id="glb-media-wrap"></div>
-            <div class="glb-caption" id="glb-caption"></div>
-            <div class="glb-counter" id="glb-counter"></div>
+        <!-- Lightbox Modal (Supports Images and Videos) -->
+        <div id="lightbox-modal" class="lightbox-modal">
+            <button class="lightbox-close-btn" aria-label="Close Lightbox"><i class="fas fa-times"></i></button>
+            <button class="lightbox-prev-btn" aria-label="Previous Media"><i class="fas fa-chevron-left"></i></button>
+            <button class="lightbox-next-btn" aria-label="Next Media"><i class="fas fa-chevron-right"></i></button>
+            <div class="lightbox-content">
+                <div id="lightbox-media-container" style="display:flex; align-items:center; justify-content:center; max-width:90vw; max-height:80vh;">
+                    <img id="lightbox-img" src="" alt="Gallery Image" class="lightbox-img">
+                </div>
+                <div id="lightbox-caption" class="lightbox-caption-text"></div>
+            </div>
         </div>
 
         <!-- ===================================================================
