@@ -29,16 +29,16 @@ window.WEDDING_CONFIG = {
         firstName: "Saleena",
         lastName: "",
         fullName: "Saleena",
-        phone: "+91 98765 43211",
-        whatsapp: "919876543211",
+        phone: "+91 70347 51528",
+        whatsapp: "917034751528",
         familyContactName: "Saleena's Family",
-        familyPhone: "+91 98765 43211",
-        familyWhatsapp: "919876543211"
+        familyPhone: "+91 70347 51528",
+        familyWhatsapp: "917034751528"
     },
     coordinator: {
         name: "Wedding Coordinator",
-        phone: "+91 98765 43212",
-        whatsapp: "919876543212"
+        phone: "+91 99955 62446",
+        whatsapp: "919995562446"
     },
 
     // MAIN WEDDING DATE (Target for Countdown: Wedding Day — 11 October 2026 at 12:00 PM IST)
