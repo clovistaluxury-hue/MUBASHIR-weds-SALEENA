@@ -132,7 +132,7 @@ window.WEDDING_CONFIG = {
         ]
     },
 
-    // GALLERY — Images only (Videos removed per user requirement)
+    // GALLERY — Images only
     gallery: [
         {
             type: "image",
@@ -145,66 +145,6 @@ window.WEDDING_CONFIG = {
             src: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.57.45_PM.jpeg",
             thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.57.45_PM.jpeg",
             caption: "Precious Moments"
-        },
-        {
-            type: "image",
-            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_12.08.43_PM.jpeg",
-            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_12.08.43_PM.jpeg",
-            caption: "Eternal Bond"
-        },
-        {
-            type: "image",
-            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_12.11.16_PM.jpeg",
-            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_12.11.16_PM.jpeg",
-            caption: "Joyful Celebrations"
-        },
-        {
-            type: "image",
-            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_12.12.29_PM.jpeg",
-            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_12.12.29_PM.jpeg",
-            caption: "Warm Blessings"
-        },
-        {
-            type: "image",
-            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_2.03.30_PM.jpeg",
-            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_2.03.30_PM.jpeg",
-            caption: "Our Story"
-        },
-        {
-            type: "image",
-            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_2.07.51_PM.jpeg",
-            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_2.07.51_PM.jpeg",
-            caption: "Forever Begins Here"
-        },
-        {
-            type: "image",
-            src: "assets/gallery/WhatsApp_Image_2026-08-21_at_7.43.36_PM.jpeg",
-            thumb: "assets/gallery/WhatsApp_Image_2026-08-21_at_7.43.36_PM.jpeg",
-            caption: "Heartfelt Smiles"
-        },
-        {
-            type: "image",
-            src: "assets/gallery/WhatsApp_Image_2026-08-21_at_7.44.30_PM.jpeg",
-            thumb: "assets/gallery/WhatsApp_Image_2026-08-21_at_7.44.30_PM.jpeg",
-            caption: "Shared Joy"
-        },
-        {
-            type: "image",
-            src: "assets/gallery/new_im.jpeg",
-            thumb: "assets/gallery/new_im.jpeg",
-            caption: "Cherished Togetherness"
-        },
-        {
-            type: "image",
-            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_11.56.12_AM.jpeg",
-            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_11.56.12_AM.jpeg",
-            caption: "Royal Wedding Portrait"
-        },
-        {
-            type: "image",
-            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_12.07.58_PM.jpeg",
-            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_12.07.58_PM.jpeg",
-            caption: "A Lifetime of Happiness"
         }
     ],
 
