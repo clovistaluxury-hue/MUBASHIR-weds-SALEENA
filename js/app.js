@@ -663,7 +663,7 @@ function initRSVPSystem(config) {
 
             const text = `Assalamu Alaikum!\n\nI would like to RSVP for Mubashir & Saleena's Wedding:\n• *Name:* ${name}\n• *Guests:* ${guests}\n• *Attendance:* ${status}${notes ? `\n• *Message:* ${notes}` : ''}\n\nThank you!`;
             const encodedText = encodeURIComponent(text);
-            const waNumber = config.whatsappRsvpNumber || '919876543210';
+            const waNumber = config.whatsappRsvpNumber || '917034751528';
 
             window.open(`https://wa.me/${waNumber}?text=${encodedText}`, '_blank');
         });

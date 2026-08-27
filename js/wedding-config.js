@@ -19,11 +19,11 @@ window.WEDDING_CONFIG = {
         firstName: "Mubashir",
         lastName: "Akber",
         fullName: "Mubashir Akber",
-        phone: "+91 98765 43210",
-        whatsapp: "919876543210",
+        phone: "+91 70347 51528",
+        whatsapp: "917034751528",
         familyContactName: "Mubashir's Family",
-        familyPhone: "+91 98765 43210",
-        familyWhatsapp: "919876543210"
+        familyPhone: "+91 70347 51528",
+        familyWhatsapp: "917034751528"
     },
     bride: {
         firstName: "Saleena",
@@ -238,5 +238,5 @@ window.WEDDING_CONFIG = {
     },
 
     // WHATSAPP RSVP NUMBER
-    whatsappRsvpNumber: "919876543210"
+    whatsappRsvpNumber: "917034751528"
 };
