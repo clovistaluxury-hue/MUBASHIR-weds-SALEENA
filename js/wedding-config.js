@@ -233,8 +233,8 @@ window.WEDDING_CONFIG = {
 
     // AUDIO CONFIGURATION
     audio: {
-        src: "assets/audio/wedding_music.mp3",
-        title: "Ambient Wedding Instrumental"
+        src: "assets/audio/kalifa.mpeg",
+        title: "Wedding Background Music"
     },
 
     // WHATSAPP RSVP NUMBER
