@@ -23,8 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Initialize Navigation & Mobile Drawer
     initNavigation();
 
-    // 7. Initialize Photo Lightbox
-    initLightbox(config.gallery || []);
+    // 7. Initialize Photo Gallery Carousel & Lightbox
+    if (window.initGalleryCarousel) {
+        window.initGalleryCarousel(config.gallery || []);
+    } else {
+        initLightbox(config.gallery || []);
+    }
 
     // 8. Initialize RSVP System
     initRSVPSystem(config);
@@ -159,7 +163,11 @@ function initDynamicContent(config) {
     renderStoryTimeline(config.story || {});
 
     // Render Photo Gallery
-    renderGalleryGrid(config.gallery || []);
+    if (window.initGalleryCarousel) {
+        window.initGalleryCarousel(config.gallery || []);
+    } else {
+        renderGalleryGrid(config.gallery || []);
+    }
 
     // Render Contact Cards
     renderContactCards(config);

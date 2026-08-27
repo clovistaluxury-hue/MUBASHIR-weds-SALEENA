@@ -132,42 +132,55 @@ window.WEDDING_CONFIG = {
         ]
     },
 
-    // GALLERY PHOTOS
+    // GALLERY — All real wedding photos & videos from shared folder
     gallery: [
         {
-            src: "assets/images/hero_wedding_couple_1787810129547.png",
-            thumb: "assets/images/hero_wedding_couple_1787810129547.png",
-            caption: "Mubashir Akber & Saleena - Together in Grace"
+            type: "image",
+            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.46.21_PM.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.46.21_PM.jpeg",
+            caption: "Together in Grace"
         },
         {
-            src: "assets/images/story_couple_portrait_1787810146621.png",
-            thumb: "assets/images/story_couple_portrait_1787810146621.png",
-            caption: "Beginning Our Forever"
+            type: "image",
+            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.57.45_PM.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.57.45_PM.jpeg",
+            caption: "Precious Moments"
         },
         {
-            src: "assets/images/user_photo_1.jpg",
-            thumb: "assets/images/user_photo_1.jpg",
-            caption: "Precious Moments & Celebrations"
+            type: "image",
+            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_12.08.43_PM.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_12.08.43_PM.jpeg",
+            caption: "Eternal Bond"
         },
         {
-            src: "assets/images/user_photo_2.jpg",
-            thumb: "assets/images/user_photo_2.jpg",
-            caption: "Joyous Traditions"
+            type: "image",
+            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_12.11.16_PM.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_12.11.16_PM.jpeg",
+            caption: "Joyful Celebrations"
         },
         {
-            src: "assets/images/user_photo_3.jpg",
-            thumb: "assets/images/user_photo_3.jpg",
+            type: "image",
+            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_12.12.29_PM.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_12.12.29_PM.jpeg",
             caption: "Warm Blessings"
         },
         {
-            src: "assets/images/gallery_rings_moment_1787810164729.png",
-            thumb: "assets/images/gallery_rings_moment_1787810164729.png",
-            caption: "Symbols of Eternal Bond"
+            type: "video",
+            src: "assets/gallery/WhatsApp_Video_2026-08-27_at_2.00.15_PM.mp4",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_2.03.30_PM.jpeg",
+            caption: "A Beautiful Memory"
         },
         {
-            src: "assets/images/gallery_dhol_night_1787810182626.png",
-            thumb: "assets/images/gallery_dhol_night_1787810182626.png",
-            caption: "Festive Celebrations"
+            type: "image",
+            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_2.03.30_PM.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_2.03.30_PM.jpeg",
+            caption: "Our Story"
+        },
+        {
+            type: "image",
+            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_2.07.51_PM.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_2.07.51_PM.jpeg",
+            caption: "Forever Begins Here"
         }
     ],
 

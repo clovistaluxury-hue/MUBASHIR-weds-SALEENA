@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -48,7 +48,7 @@
         </div>
 
         <!-- Skip Intro Button -->
-        <button id="intro-skip-btn" aria-label="Skip Intro">SKIP INTRO →</button>
+        <button id="intro-skip-btn" aria-label="Skip Intro">SKIP INTRO â†’</button>
     </div>
 
     <!-- Floating Gold Dust Particles Canvas -->
@@ -112,7 +112,7 @@
     <main>
 
         <!-- ===================================================================
-             PAGE 1 — WEDDING CARD STILL IMAGE COVER (EXACT CONTINUATION)
+             PAGE 1 â€” WEDDING CARD STILL IMAGE COVER (EXACT CONTINUATION)
              =================================================================== -->
         <section id="cover" class="hero-still-section">
             <img src="assets/images/hero_card_still.jpg" alt="Mubashir Akber & Saleena Wedding Invitation Still Image" class="hero-still-img">
@@ -149,14 +149,14 @@
         </section>
 
         <!-- ===================================================================
-             PAGE 2 — INVITATION & WEDDING DETAILS
+             PAGE 2 â€” INVITATION & WEDDING DETAILS
              =================================================================== -->
         <section id="invitation" class="section section-light">
             <div class="container">
                 <div class="section-header">
                     <div class="section-subtitle">TOGETHER WITH THEIR FAMILIES</div>
                     <div class="ornamental-divider">
-                        <span class="ornamental-symbol">❖</span>
+                        <span class="ornamental-symbol">â–</span>
                     </div>
                     <p style="font-size: 0.95rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); max-width: 600px; margin: 0 auto 16px;">
                         WITH THE BLESSINGS OF ALLAH WE INVITE YOU TO CELEBRATE THE WEDDING OF
@@ -179,7 +179,7 @@
         </section>
 
         <!-- ===================================================================
-             PAGE 3 — VENUE & LOCATION
+             PAGE 3 â€” VENUE & LOCATION
              =================================================================== -->
         <section id="venue" class="section section-champagne">
             <div class="container">
@@ -189,7 +189,7 @@
                     <p class="section-subtitle" style="font-size: 0.85rem; margin-top: 8px;">
                         WE CAN'T WAIT TO CELEBRATE THIS SPECIAL DAY WITH YOU
                     </p>
-                    <div class="ornamental-divider"><span class="ornamental-symbol">❖</span></div>
+                    <div class="ornamental-divider"><span class="ornamental-symbol">â–</span></div>
                 </div>
 
                 <!-- Venue Info Cards -->
@@ -224,14 +224,14 @@
         </section>
 
         <!-- ===================================================================
-             PAGE 4 — OUR STORY
+             PAGE 4 â€” OUR STORY
              =================================================================== -->
         <section id="story" class="section section-dark">
             <div class="container">
                 <div class="section-header">
                     <div class="section-subtitle" style="color:var(--gold-light);">THE JOURNEY OF LOVE</div>
                     <h2 class="section-title">OUR STORY</h2>
-                    <div class="ornamental-divider"><span class="ornamental-symbol">❖</span></div>
+                    <div class="ornamental-divider"><span class="ornamental-symbol">â–</span></div>
                 </div>
 
                 <div class="story-wrapper">
@@ -252,36 +252,43 @@
             </div>
         </section>
 
-        <!-- ===================================================================
-             PAGE 5 — PHOTO GALLERY (PRECIOUS MOMENTS)
-             =================================================================== -->
+        <!-- PAGE 5 - PHOTO GALLERY - PREMIUM CAROUSEL -->
         <section id="gallery" class="section section-light">
             <div class="container">
                 <div class="section-header">
-                    <div class="section-subtitle">MEMORIES & GLIMPSES</div>
+                    <div class="section-subtitle">MEMORIES &amp; GLIMPSES</div>
                     <h2 class="section-title">PRECIOUS MOMENTS</h2>
-                    <div class="ornamental-divider"><span class="ornamental-symbol">❖</span></div>
+                    <div class="ornamental-divider"><span class="ornamental-symbol">&#10022;</span></div>
                 </div>
-
-                <div class="gallery-grid" id="gallery-grid">
-                    <!-- Gallery Photos populated dynamically via app.js -->
+            </div>
+            <div class="gallery-carousel" id="gallery-carousel">
+                <div class="carousel-stage" id="carousel-stage"></div>
+                <button class="carousel-btn carousel-btn-prev" id="carousel-prev" aria-label="Previous">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn carousel-btn-next" id="carousel-next" aria-label="Next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-info-bar">
+                    <div class="carousel-caption" id="carousel-caption"></div>
+                    <div class="carousel-counter" id="carousel-counter">01 / 08</div>
                 </div>
+                <div class="carousel-thumbs" id="carousel-thumbs"></div>
             </div>
         </section>
 
-        <!-- Lightbox Modal -->
-        <div id="lightbox-modal" class="lightbox-modal">
-            <button class="lightbox-close-btn" aria-label="Close Lightbox"><i class="fas fa-times"></i></button>
-            <button class="lightbox-prev-btn" aria-label="Previous Image"><i class="fas fa-chevron-left"></i></button>
-            <button class="lightbox-next-btn" aria-label="Next Image"><i class="fas fa-chevron-right"></i></button>
-            <div class="lightbox-content">
-                <img id="lightbox-img" src="" alt="Gallery Lightbox Image" class="lightbox-img">
-                <div id="lightbox-caption" class="lightbox-caption-text"></div>
-            </div>
+        <!-- GALLERY FULLSCREEN LIGHTBOX -->
+        <div id="gallery-lightbox" class="gallery-lightbox" role="dialog">
+            <button class="glb-close" id="glb-close" aria-label="Close"><i class="fas fa-times"></i></button>
+            <button class="glb-prev" id="glb-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <button class="glb-next" id="glb-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+            <div class="glb-media-wrap" id="glb-media-wrap"></div>
+            <div class="glb-caption" id="glb-caption"></div>
+            <div class="glb-counter" id="glb-counter"></div>
         </div>
 
         <!-- ===================================================================
-             PAGE 6 — RSVP SECTION
+             PAGE 6 â€” RSVP SECTION
              =================================================================== -->
         <section id="rsvp" class="section section-champagne">
             <div class="container-narrow">
@@ -289,7 +296,7 @@
                     <div class="section-subtitle">ATTENDANCE CONFIRMATION</div>
                     <h2 class="section-title">KINDLY RSVP</h2>
                     <p class="section-subtitle" style="font-size:0.85rem; margin-top:8px;">WE WOULD LOVE TO CELEBRATE WITH YOU</p>
-                    <div class="ornamental-divider"><span class="ornamental-symbol">❖</span></div>
+                    <div class="ornamental-divider"><span class="ornamental-symbol">â–</span></div>
                 </div>
 
                 <div class="rsvp-card">
@@ -343,14 +350,14 @@
         </section>
 
         <!-- ===================================================================
-             PAGE 7 — CONTACT SECTION
+             PAGE 7 â€” CONTACT SECTION
              =================================================================== -->
         <section id="contact" class="section section-light">
             <div class="container">
                 <div class="section-header">
                     <div class="section-subtitle">HELP & ASSISTANCE</div>
                     <h2 class="section-title">FOR ANY QUESTIONS</h2>
-                    <div class="ornamental-divider"><span class="ornamental-symbol">❖</span></div>
+                    <div class="ornamental-divider"><span class="ornamental-symbol">â–</span></div>
                 </div>
 
                 <div class="contact-cards-grid" id="contact-cards-grid">
@@ -360,7 +367,7 @@
         </section>
 
         <!-- ===================================================================
-             PAGE 8 — GIFTS & WISHES
+             PAGE 8 â€” GIFTS & WISHES
              =================================================================== -->
         <section id="gifts" class="section section-champagne">
             <div class="container">
@@ -370,7 +377,7 @@
                     <p style="font-size: 0.95rem; color: var(--text-muted); max-width: 650px; margin: 16px auto 0; line-height: 1.6;">
                         Your presence and blessings mean the world to us. If you wish to shower us with your blessings, a gift is always welcome.
                     </p>
-                    <div class="ornamental-divider"><span class="ornamental-symbol">❖</span></div>
+                    <div class="ornamental-divider"><span class="ornamental-symbol">â–</span></div>
                 </div>
 
                 <div class="gifts-grid">
@@ -407,7 +414,7 @@
         </section>
 
         <!-- ===================================================================
-             PAGE 9 — FINAL THANK YOU SECTION
+             PAGE 9 â€” FINAL THANK YOU SECTION
              =================================================================== -->
         <section class="thankyou-section">
             <div class="container thankyou-card">
@@ -424,13 +431,11 @@
 
                 <div class="hero-couple-names" style="font-size: 2.5rem; margin: 20px 0;">
                     MUBASHIR AKBER & SALEENA
-                </div>
+        </div>
 
-                <div>
-                    <span class="pulsing-heart">❤️</span>
-                </div>
-            </div>
-        </section>
+        <!-- ===================================================================
+             PAGE 6 â€” RSVP SECTION
+             =================================================================== -->
 
     </main>
 
@@ -453,6 +458,7 @@
 
     <!-- Application Scripts -->
     <script src="js/wedding-config.js"></script>
+    <script src="js/gallery-carousel.js"></script>
     <script src="js/app.js"></script>
 
 </body>
