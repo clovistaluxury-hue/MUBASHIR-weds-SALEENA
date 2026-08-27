@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="You are warmly invited to celebrate the wedding of Mubashir Akber and Saleena.">
+    <meta name="author" content="Mubashir Akber & Saleena">
+    <title>Mubashir Akber & Saleena | Wedding Invitation</title>
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Mubashir Akber & Saleena | Wedding Invitation">
+    <meta property="og:description" content="You are warmly invited to celebrate the wedding of Mubashir Akber and Saleena.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=MonteCarlo&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="intro-active">
+
+    <!-- ===================================================================
+         CINEMATIC FULL-SCREEN VIDEO INTRO SECTION
+         =================================================================== -->
+    <div id="intro-container">
+        <!-- Static Poster Image while Video Loads -->
+        <img id="intro-poster" src="assets/images/intro_poster.jpg" alt="Mubashir & Saleena Wedding Intro Poster">
+
+        <!-- Full-Screen Video Element -->
+        <video id="intro-video" playsinline webkit-playsinline preload="auto" poster="assets/images/intro_poster.jpg">
+            <source src="assets/video/wedding_intro.mp4" type="video/mp4">
+        </video>
+
+        <!-- Dark Translucent Overlay -->
+        <div id="intro-overlay"></div>
+
+        <!-- Center Touch Control -->
+        <div id="intro-touch-area">
+            <div class="touch-ring-pulsing"></div>
+            <div id="intro-touch-text">TOUCH TO BEGIN</div>
+            <div id="intro-subtitle-text">OUR STORY BEGINS HERE</div>
+        </div>
+
+        <!-- Skip Intro Button -->
+        <button id="intro-skip-btn" aria-label="Skip Intro">SKIP INTRO →</button>
+    </div>
+
+    <!-- Floating Gold Dust Particles Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Top Scroll Progress Bar -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="nav-header">
+        <div class="nav-container">
+            <a href="#cover" class="nav-logo">
+                M<span>&</span>S
+            </a>
+            <ul class="nav-links">
+                <li class="nav-link"><a href="#cover">Home</a></li>
+                <li class="nav-link"><a href="#invitation">Invitation</a></li>
+                <li class="nav-link"><a href="#events">Events</a></li>
+                <li class="nav-link"><a href="#venue">Venue</a></li>
+                <li class="nav-link"><a href="#story">Story</a></li>
+                <li class="nav-link"><a href="#gallery">Gallery</a></li>
+                <li class="nav-link"><a href="#rsvp">RSVP</a></li>
+                <li class="nav-link"><a href="#gifts">Gifts</a></li>
+            </ul>
+            <div style="display:flex; align-items:center; gap:12px;">
+                <button class="btn-gold-outline" style="padding: 8px 18px; font-size: 0.75rem;" onclick="shareInvitation()">
+                    <i class="fas fa-share-alt"></i> Share
+                </button>
+                <button class="menu-toggle-btn" aria-label="Toggle Mobile Menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Overlay -->
+    <div class="mobile-nav-overlay"></div>
+    <div class="mobile-nav-drawer">
+        <ul class="mobile-nav-links">
+            <li class="mobile-nav-link"><a href="#cover">Home</a></li>
+            <li class="mobile-nav-link"><a href="#invitation">Invitation</a></li>
+            <li class="mobile-nav-link"><a href="#events">Events & Schedule</a></li>
+            <li class="mobile-nav-link"><a href="#venue">Venue & Map</a></li>
+            <li class="mobile-nav-link"><a href="#story">Our Story</a></li>
+            <li class="mobile-nav-link"><a href="#gallery">Photo Gallery</a></li>
+            <li class="mobile-nav-link"><a href="#rsvp">RSVP</a></li>
+            <li class="mobile-nav-link"><a href="#contact">Contact</a></li>
+            <li class="mobile-nav-link"><a href="#gifts">Gifts & Wishes</a></li>
+        </ul>
+        <div style="text-align:center; padding-top:20px; border-top:1px solid var(--gold-border);">
+            <div style="font-family:var(--font-heading); color:var(--gold-light); font-size:1.2rem;">Mubashir & Saleena</div>
+            <div style="font-size:0.75rem; color:var(--text-light-muted); margin-top:4px;">15 November 2026</div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main>
+
+        <!-- ===================================================================
+             PAGE 1 — WEDDING CARD STILL IMAGE COVER (EXACT CONTINUATION)
+             =================================================================== -->
+        <section id="cover" class="hero-still-section">
+            <img src="assets/images/hero_card_still.jpg" alt="Mubashir Akber & Saleena Wedding Invitation Still Image" class="hero-still-img">
+        </section>
+
+        <!-- ===================================================================
+             COUNTDOWN TIMER SECTION
+             =================================================================== -->
+        <section class="countdown-banner">
+            <div class="container" id="countdown-wrapper">
+                <div class="section-subtitle" style="color: var(--gold-light);">COUNTING DOWN TO FOREVER</div>
+                <div class="countdown-grid">
+                    <div class="countdown-box">
+                        <span class="countdown-val" id="cd-days">00</span>
+                        <span class="countdown-lbl">DAYS</span>
+                    </div>
+                    <div class="countdown-box">
+                        <span class="countdown-val" id="cd-hours">00</span>
+                        <span class="countdown-lbl">HOURS</span>
+                    </div>
+                    <div class="countdown-box">
+                        <span class="countdown-val" id="cd-mins">00</span>
+                        <span class="countdown-lbl">MINUTES</span>
+                    </div>
+                    <div class="countdown-box">
+                        <span class="countdown-val" id="cd-secs">00</span>
+                        <span class="countdown-lbl">SECONDS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             PAGE 2 — INVITATION & WEDDING DETAILS
+             =================================================================== -->
+        <section id="invitation" class="section section-light">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-subtitle">TOGETHER WITH THEIR FAMILIES</div>
+                    <div class="ornamental-divider">
+                        <span class="ornamental-symbol">❖</span>
+                    </div>
+                    <p style="font-size: 0.95rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); max-width: 600px; margin: 0 auto 16px;">
+                        WITH THE BLESSINGS OF ALLAH WE INVITE YOU TO CELEBRATE THE WEDDING OF
+                    </p>
+                    <h2 class="section-title dynamic-couple-names">MUBASHIR AKBER & SALEENA</h2>
+                    <p class="script-font" style="font-size: 2.2rem; color: var(--gold-dark); margin-top: 4px;">
+                        As They Begin Their Journey Together
+                    </p>
+                    <div class="hero-date-badge dynamic-wedding-date" style="color: var(--text-main); border-color: var(--gold-primary); margin-top: 24px;">
+                        SUNDAY, 15 NOVEMBER 2026
+                    </div>
+                </div>
+
+                <!-- Event Cards Container -->
+                <div id="events" style="scroll-margin-top: 100px;"></div>
+                <div class="events-grid" id="events-cards-container">
+                    <!-- Populated dynamically via app.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             PAGE 3 — VENUE & LOCATION
+             =================================================================== -->
+        <section id="venue" class="section section-champagne">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-subtitle">CELEBRATION VENUES</div>
+                    <h2 class="section-title">VENUE & LOCATION</h2>
+                    <p class="section-subtitle" style="font-size: 0.85rem; margin-top: 8px;">
+                        WE CAN'T WAIT TO CELEBRATE THIS SPECIAL DAY WITH YOU
+                    </p>
+                    <div class="ornamental-divider"><span class="ornamental-symbol">❖</span></div>
+                </div>
+
+                <!-- Venue Info Cards -->
+                <div class="venue-cards-grid">
+                    <div class="venue-card text-center" id="venue-nikah-box"></div>
+                    <div class="venue-card text-center" id="venue-reception-box"></div>
+                </div>
+
+                <!-- Interactive Google Map Section -->
+                <div class="map-wrapper">
+                    <iframe class="map-iframe" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.896683832812!2d77.5945627!3d12.9715987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzE3LjciTiA3N8KwMzUnNDAuNCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+
+                <div class="map-btn-bar">
+                    <a href="https://maps.google.com" target="_blank" class="btn-gold">
+                        <i class="fas fa-directions"></i> VIEW ON GOOGLE MAPS
+                    </a>
+                </div>
+
+                <!-- Information Grid -->
+                <div class="info-items-grid" id="venue-info-grid">
+                    <!-- Populated dynamically via app.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             PAGE 4 — OUR STORY
+             =================================================================== -->
+        <section id="story" class="section section-dark">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-subtitle" style="color:var(--gold-light);">THE JOURNEY OF LOVE</div>
+                    <h2 class="section-title">OUR STORY</h2>
+                    <div class="ornamental-divider"><span class="ornamental-symbol">❖</span></div>
+                </div>
+
+                <div class="story-wrapper">
+                    <div class="story-img-frame">
+                        <img src="assets/images/story_couple_portrait_1787810146621.png" alt="Mubashir & Saleena Story Portrait" class="story-img">
+                    </div>
+
+                    <div class="story-quote-card">
+                        <blockquote class="story-quote" id="story-quote">
+                            "Two different hearts, two different journeys. But by the grace of Allah, our paths crossed for a reason. Today, we begin a new chapter together."
+                        </blockquote>
+
+                        <div class="timeline" id="story-timeline">
+                            <!-- Timeline steps dynamically loaded -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             PAGE 5 — PHOTO GALLERY (PRECIOUS MOMENTS)
+             =================================================================== -->
+        <section id="gallery" class="section section-light">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-subtitle">MEMORIES & GLIMPSES</div>
+                    <h2 class="section-title">PRECIOUS MOMENTS</h2>
+                    <div class="ornamental-divider"><span class="ornamental-symbol">❖</span></div>
+                </div>
+
+                <div class="gallery-grid" id="gallery-grid">
+                    <!-- Gallery Photos populated dynamically via app.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox Modal -->
+        <div id="lightbox-modal" class="lightbox-modal">
+            <button class="lightbox-close-btn" aria-label="Close Lightbox"><i class="fas fa-times"></i></button>
+            <button class="lightbox-prev-btn" aria-label="Previous Image"><i class="fas fa-chevron-left"></i></button>
+            <button class="lightbox-next-btn" aria-label="Next Image"><i class="fas fa-chevron-right"></i></button>
+            <div class="lightbox-content">
+                <img id="lightbox-img" src="" alt="Gallery Lightbox Image" class="lightbox-img">
+                <div id="lightbox-caption" class="lightbox-caption-text"></div>
+            </div>
+        </div>
+
+        <!-- ===================================================================
+             PAGE 6 — RSVP SECTION
+             =================================================================== -->
+        <section id="rsvp" class="section section-champagne">
+            <div class="container-narrow">
+                <div class="section-header">
+                    <div class="section-subtitle">ATTENDANCE CONFIRMATION</div>
+                    <h2 class="section-title">KINDLY RSVP</h2>
+                    <p class="section-subtitle" style="font-size:0.85rem; margin-top:8px;">WE WOULD LOVE TO CELEBRATE WITH YOU</p>
+                    <div class="ornamental-divider"><span class="ornamental-symbol">❖</span></div>
+                </div>
+
+                <div class="rsvp-card">
+                    <form id="rsvp-form" class="rsvp-form">
+                        <div class="form-group">
+                            <label class="form-label" for="rsvp-name">GUEST NAME</label>
+                            <input type="text" id="rsvp-name" class="form-input" placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="rsvp-guests">NUMBER OF GUESTS</label>
+                            <select id="rsvp-guests" class="form-select">
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5+">5+ Family Members</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">WILL YOU BE ATTENDING?</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="attendance" value="Joyfully Accept" checked>
+                                    Joyfully Accept
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="attendance" value="Regretfully Decline">
+                                    Regretfully Decline
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="rsvp-notes">WARM WISHES / MESSAGE</label>
+                            <textarea id="rsvp-notes" class="form-textarea" rows="3" placeholder="Write a note for the bride and groom..."></textarea>
+                        </div>
+
+                        <div class="rsvp-buttons-row">
+                            <button type="submit" class="btn-gold" style="flex:1;">
+                                <i class="fas fa-check-circle"></i> SUBMIT RSVP
+                            </button>
+                            <button type="button" id="whatsapp-rsvp-btn" class="btn-gold-outline" style="flex:1;">
+                                <i class="fab fa-whatsapp"></i> RSVP ON WHATSAPP
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             PAGE 7 — CONTACT SECTION
+             =================================================================== -->
+        <section id="contact" class="section section-light">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-subtitle">HELP & ASSISTANCE</div>
+                    <h2 class="section-title">FOR ANY QUESTIONS</h2>
+                    <div class="ornamental-divider"><span class="ornamental-symbol">❖</span></div>
+                </div>
+
+                <div class="contact-cards-grid" id="contact-cards-grid">
+                    <!-- Populated dynamically via app.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             PAGE 8 — GIFTS & WISHES
+             =================================================================== -->
+        <section id="gifts" class="section section-champagne">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-subtitle">BLESSINGS & WISHES</div>
+                    <h2 class="section-title">YOUR PRESENCE IS OUR GREATEST GIFT</h2>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); max-width: 650px; margin: 16px auto 0; line-height: 1.6;">
+                        Your presence and blessings mean the world to us. If you wish to shower us with your blessings, a gift is always welcome.
+                    </p>
+                    <div class="ornamental-divider"><span class="ornamental-symbol">❖</span></div>
+                </div>
+
+                <div class="gifts-grid">
+                    <div class="gift-card glass-card">
+                        <div class="gift-icon"><i class="fas fa-university"></i></div>
+                        <h3 style="font-size:1.3rem; margin-bottom:8px;">BANK TRANSFER</h3>
+                        <p style="font-size:0.85rem; color:var(--text-muted);">Direct bank transfer details for well wishers.</p>
+                        <div id="gift-bank-box" class="gift-details-box"></div>
+                    </div>
+
+                    <div class="gift-card glass-card">
+                        <div class="gift-icon"><i class="fas fa-qrcode"></i></div>
+                        <h3 style="font-size:1.3rem; margin-bottom:8px;">ONLINE TRANSFER</h3>
+                        <p style="font-size:0.85rem; color:var(--text-muted);">Instant UPI and digital transfer options.</p>
+                        <div class="gift-details-box" style="text-align:center;">
+                            <div style="font-weight:600; color:var(--gold-dark); margin-bottom:4px;">UPI ID</div>
+                            <div style="font-size:1rem; font-weight:700;">mubashir.saleena@upi</div>
+                            <button class="btn-gold-outline" style="margin-top:12px; padding:6px 16px; font-size:0.75rem;" onclick="copyToClipboard('mubashir.saleena@upi', 'UPI ID Copied!')">
+                                <i class="far fa-copy"></i> Copy UPI ID
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="gift-card glass-card">
+                        <div class="gift-icon"><i class="fas fa-envelope-open-text"></i></div>
+                        <h3 style="font-size:1.3rem; margin-bottom:8px;">GIFT ENVELOPE</h3>
+                        <p style="font-size:0.85rem; color:var(--text-muted);">In-person envelope counter at venue.</p>
+                        <div class="gift-details-box">
+                            <p style="font-size:0.85rem; color:var(--text-muted);">A dedicated gift box counter will be available at the venue entrance during the reception.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             PAGE 9 — FINAL THANK YOU SECTION
+             =================================================================== -->
+        <section class="thankyou-section">
+            <div class="container thankyou-card">
+                <h2 class="thankyou-title">THANK YOU</h2>
+                <div class="thankyou-sub">FOR BEING A PART OF OUR BEAUTIFUL BEGINNING.</div>
+                
+                <p style="font-size: 1.1rem; letter-spacing: 0.15em; color: var(--gold-light); text-transform: uppercase;">
+                    WE CAN'T WAIT TO CELEBRATE THIS SPECIAL DAY WITH YOU.
+                </p>
+
+                <div class="thankyou-blessing">
+                    "May Allah bless our journey together."
+                </div>
+
+                <div class="hero-couple-names" style="font-size: 2.5rem; margin: 20px 0;">
+                    MUBASHIR AKBER & SALEENA
+                </div>
+
+                <div>
+                    <span class="pulsing-heart">❤️</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Floating Audio Toggle Button -->
+    <button id="audio-player-btn" class="audio-player-btn" aria-label="Toggle Wedding Music">
+        <div class="eq-bars">
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+        </div>
+    </button>
+
+    <!-- Floating Back To Top Button -->
+    <button id="back-to-top-btn" class="back-to-top-btn" aria-label="Back To Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Global Toast Notification Container -->
+    <div id="toast-notification" class="toast-notification"></div>
+
+    <!-- Application Scripts -->
+    <script src="js/wedding-config.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>

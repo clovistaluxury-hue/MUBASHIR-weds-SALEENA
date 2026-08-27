@@ -1,0 +1,1421 @@
+/* ==========================================================================
+   LUXURY ISLAMIC / INDIAN DIGITAL WEDDING INVITATION STYLESHEET
+   Couple: Mubashir Akber & Saleena
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS & SYSTEM VARIABLES
+   -------------------------------------------------------------------------- */
+:root {
+    /* Color Palette */
+    --bg-primary: #F7F1E5;           /* Warm Ivory / Champagne */
+    --bg-secondary: #EFE4D1;         /* Slightly deeper champagne */
+    --bg-dark: #15110D;              /* Deep Royal Charcoal / Black */
+    --bg-dark-card: #1E1813;         /* Card background for dark sections */
+    --bg-glass-light: rgba(255, 255, 255, 0.7);
+    --bg-glass-dark: rgba(21, 17, 13, 0.75);
+
+    --gold-primary: #C9A45C;        /* Signature Metallic Gold */
+    --gold-light: #E4C98A;          /* Soft Light Gold */
+    --gold-dark: #9A752C;           /* Deep Warm Gold */
+    --gold-gradient: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+    --gold-gradient-soft: linear-gradient(135deg, #C9A45C 0%, #E4C98A 50%, #9A752C 100%);
+    --gold-border: rgba(201, 164, 92, 0.35);
+
+    --text-main: #33271B;           /* Elegant Warm Dark Brown */
+    --text-muted: #6B5B4C;          /* Muted Secondary Text */
+    --text-light: #F7F1E5;          /* Light Text on Dark BG */
+    --text-light-muted: #C0B4A5;    /* Muted Light Text */
+
+    --accent-blush: #D8B7A0;        /* Soft Blush Rose Accent */
+    --accent-rose: #C28D75;
+
+    /* Typography */
+    --font-heading: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    --font-body: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    --font-script: 'MonteCarlo', 'Great Vibes', 'Pinyon Script', cursive;
+
+    /* Layout & Shadows */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
+
+    --shadow-gold-glow: 0 0 25px rgba(201, 164, 92, 0.25);
+    --shadow-soft: 0 10px 30px rgba(51, 39, 27, 0.08);
+    --shadow-dark: 0 15px 40px rgba(0, 0, 0, 0.4);
+
+    --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE STYLES
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Lock scroll during intro video */
+body.intro-active {
+    overflow: hidden !important;
+    height: 100vh !important;
+    touch-action: none !important;
+    position: fixed;
+    width: 100%;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--gold-primary);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-light);
+}
+
+/* Selection */
+::selection {
+    background: var(--gold-primary);
+    color: #fff;
+}
+
+/* Typography Defaults */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+    color: var(--text-main);
+}
+
+.script-font {
+    font-family: var(--font-script);
+    font-weight: 400;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   CINEMATIC FULL-SCREEN VIDEO INTRO SECTION
+   -------------------------------------------------------------------------- */
+#intro-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    background: #15110D;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1.8s var(--transition-smooth);
+}
+
+#intro-container.intro-fading {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#intro-poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+#intro-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#intro-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(21, 17, 13, 0.5) 0%, rgba(21, 17, 13, 0.88) 100%);
+    z-index: 2;
+    transition: background 1s ease, opacity 0.5s ease;
+}
+
+#intro-overlay.dimmed {
+    background: radial-gradient(circle at center, rgba(21, 17, 13, 0.1) 0%, rgba(21, 17, 13, 0.45) 100%);
+}
+
+#intro-touch-area {
+    position: relative;
+    z-index: 4;
+    text-align: center;
+    cursor: pointer;
+    padding: 60px 40px;
+    border-radius: 50%;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.4s var(--transition-smooth), opacity 0.4s ease;
+}
+
+#intro-touch-area.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.9);
+}
+
+/* Breathing Ring Pulse Animation around TOUCH TO BEGIN */
+.touch-ring-pulsing {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold-light);
+    box-shadow: 0 0 30px rgba(201, 164, 92, 0.4), inset 0 0 20px rgba(201, 164, 92, 0.2);
+    animation: ringBreathing 3s infinite ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes ringBreathing {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(0.95);
+        opacity: 0.5;
+        box-shadow: 0 0 15px rgba(201, 164, 92, 0.3);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.08);
+        opacity: 0.95;
+        box-shadow: 0 0 35px rgba(201, 164, 92, 0.7), inset 0 0 25px rgba(201, 164, 92, 0.4);
+    }
+}
+
+#intro-touch-text {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    letter-spacing: 0.2em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    text-shadow: 0 0 15px rgba(201, 164, 92, 0.7);
+    font-weight: 600;
+}
+
+#intro-subtitle-text {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    color: rgba(247, 241, 229, 0.85);
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* Subtle Skip Button */
+#intro-skip-btn {
+    position: absolute;
+    bottom: 36px;
+    right: 36px;
+    z-index: 5;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(247, 241, 229, 0.65);
+    background: rgba(21, 17, 13, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 8px 20px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(201, 164, 92, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#intro-skip-btn:hover {
+    color: var(--gold-light);
+    border-color: var(--gold-primary);
+    background: rgba(21, 17, 13, 0.8);
+    box-shadow: 0 0 15px rgba(201, 164, 92, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 1 — HERO STILL IMAGE COVER (EXACT CONTINUATION)
+   -------------------------------------------------------------------------- */
+.hero-still-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    background: #15110D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-still-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* --------------------------------------------------------------------------
+   3. BACKGROUND & ORNAMENTAL UTILITIES
+   -------------------------------------------------------------------------- */
+
+/* Canvas Floating Gold Dust */
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Scroll Progress Bar */
+.scroll-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(201, 164, 92, 0.15);
+    z-index: 1000;
+}
+.scroll-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--gold-gradient);
+    box-shadow: 0 0 10px var(--gold-light);
+    transition: width 0.1s linear;
+}
+
+/* Section Containers */
+.section {
+    position: relative;
+    padding: 90px 24px;
+    overflow: hidden;
+}
+
+.section-dark {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+.section-dark h1, .section-dark h2, .section-dark h3 {
+    color: var(--gold-light);
+}
+
+.section-light {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+}
+
+.section-champagne {
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 3;
+}
+
+.container-narrow {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 3;
+}
+
+/* Islamic Ornamental Motif Frame & Dividers */
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.bismillah-text {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--gold-primary);
+    text-align: center;
+    margin-bottom: 8px;
+    direction: rtl;
+    line-height: 1.5;
+}
+
+.arabic-subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 24px;
+}
+
+.section-title {
+    font-size: 2.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+.section-dark .section-subtitle {
+    color: var(--text-light-muted);
+}
+
+/* Golden Ornamental Divider */
+.ornamental-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 24px auto;
+}
+.ornamental-divider::before,
+.ornamental-divider::after {
+    content: '';
+    height: 1px;
+    width: 80px;
+    background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+}
+.ornamental-symbol {
+    color: var(--gold-primary);
+    font-size: 1.2rem;
+}
+
+/* Glassmorphism Card Style */
+.glass-card {
+    background: var(--bg-glass-light);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--gold-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.4s var(--transition-smooth), box-shadow 0.4s var(--transition-smooth);
+}
+
+.glass-card-dark {
+    background: var(--bg-glass-dark);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(201, 164, 92, 0.25);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-dark);
+}
+
+.glass-card:hover, .glass-card-dark:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-gold-glow);
+}
+
+/* Gold Button Styles */
+.btn-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: var(--gold-gradient);
+    color: #15110D;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(201, 164, 92, 0.3);
+    transition: all 0.3s var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+.btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(201, 164, 92, 0.5);
+    background: var(--gold-gradient-soft);
+}
+.btn-gold:active {
+    transform: translateY(0);
+}
+
+.btn-gold-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 13px 30px;
+    background: transparent;
+    color: var(--gold-primary);
+    border: 1.5px solid var(--gold-primary);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all 0.3s var(--transition-smooth);
+}
+.btn-gold-outline:hover {
+    background: var(--gold-primary);
+    color: #15110D;
+    box-shadow: 0 6px 20px rgba(201, 164, 92, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   4. NAVIGATION BAR & MOBILE DRAWER
+   -------------------------------------------------------------------------- */
+.nav-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 900;
+    padding: 16px 32px;
+    transition: all 0.4s var(--transition-smooth);
+}
+.nav-header.scrolled {
+    background: rgba(21, 17, 13, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 12px 32px;
+    border-bottom: 1px solid var(--gold-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.nav-logo span {
+    color: var(--gold-primary);
+    font-family: var(--font-script);
+    font-size: 1.8rem;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+}
+.nav-link a {
+    font-size: 0.82rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+.nav-link a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: var(--gold-gradient);
+    transition: width 0.3s ease;
+}
+.nav-link a:hover {
+    color: var(--gold-light);
+}
+.nav-link a:hover::after {
+    width: 100%;
+}
+
+/* Mobile Menu Toggle Button */
+.menu-toggle-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    z-index: 950;
+    align-items: center;
+    justify-content: center;
+}
+.hamburger-line {
+    width: 24px;
+    height: 2px;
+    background: var(--gold-light);
+    display: block;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+.hamburger-line:nth-child(1) { transform: translateY(-7px); }
+.hamburger-line:nth-child(2) { opacity: 1; }
+.hamburger-line:nth-child(3) { transform: translateY(7px); }
+
+.menu-toggle-btn.active .hamburger-line:nth-child(1) { transform: rotate(45deg); }
+.menu-toggle-btn.active .hamburger-line:nth-child(2) { opacity: 0; }
+.menu-toggle-btn.active .hamburger-line:nth-child(3) { transform: rotate(-45deg); }
+
+/* Mobile Menu Overlay Drawer */
+.mobile-nav-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--bg-dark);
+    border-left: 1px solid var(--gold-border);
+    z-index: 920;
+    padding: 100px 36px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: right 0.4s var(--transition-smooth);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.8);
+}
+.mobile-nav-drawer.open {
+    right: 0;
+}
+
+.mobile-nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.mobile-nav-link a {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+    color: var(--text-light);
+    display: block;
+    transition: color 0.3s ease;
+}
+.mobile-nav-link a:hover {
+    color: var(--gold-light);
+}
+
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 910;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+.mobile-nav-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* --------------------------------------------------------------------------
+   6. COUNTDOWN TIMER SECTION
+   -------------------------------------------------------------------------- */
+.countdown-banner {
+    background: linear-gradient(180deg, #15110D 0%, #1E1813 100%);
+    border-top: 1px solid var(--gold-border);
+    border-bottom: 1px solid var(--gold-border);
+    padding: 50px 24px;
+    text-align: center;
+}
+
+.countdown-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.countdown-box {
+    width: 95px;
+    height: 105px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--gold-border);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.countdown-val {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+}
+
+.countdown-lbl {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-light-muted);
+    margin-top: 8px;
+}
+
+.countdown-arrived {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+}
+
+/* --------------------------------------------------------------------------
+   7. PAGE 2 — WEDDING DETAILS & EVENT CARDS
+   -------------------------------------------------------------------------- */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+    margin-top: 40px;
+}
+
+.event-card {
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    border: 1px solid var(--gold-border);
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.event-icon-box {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    background: radial-gradient(circle, #F7F1E5 0%, #EFE4D1 100%);
+    border: 1.5px solid var(--gold-primary);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-primary);
+    box-shadow: 0 5px 15px rgba(201, 164, 92, 0.2);
+}
+.event-icon-box svg {
+    width: 34px;
+    height: 34px;
+    fill: currentColor;
+}
+
+.event-title {
+    font-size: 1.8rem;
+    letter-spacing: 0.12em;
+    color: var(--text-main);
+    margin-bottom: 12px;
+}
+
+.event-date-time {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--gold-dark);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.event-venue-name {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.event-venue-address {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+.event-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   8. PAGE 3 — VENUE & LOCATION
+   -------------------------------------------------------------------------- */
+.venue-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+    margin-bottom: 40px;
+}
+
+.venue-card {
+    padding: 32px;
+    background: var(--bg-glass-light);
+    border: 1px solid var(--gold-border);
+    border-radius: var(--radius-md);
+}
+
+.map-wrapper {
+    width: 100%;
+    height: 380px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 2px solid var(--gold-primary);
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 30px;
+    position: relative;
+}
+.map-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.map-btn-bar {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.info-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.info-item-card {
+    padding: 24px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(201, 164, 92, 0.2);
+}
+.info-item-icon {
+    font-size: 1.8rem;
+    color: var(--gold-primary);
+    margin-bottom: 10px;
+}
+.info-item-title {
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+}
+.info-item-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   9. PAGE 4 — OUR STORY
+   -------------------------------------------------------------------------- */
+.story-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+}
+@media (max-width: 900px) {
+    .story-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+.story-img-frame {
+    position: relative;
+    padding: 12px;
+    background: var(--gold-gradient);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-dark);
+}
+.story-img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+}
+
+.story-quote-card {
+    background: var(--bg-glass-dark);
+    padding: 36px;
+    border: 1px solid var(--gold-border);
+    border-radius: var(--radius-md);
+}
+
+.story-quote {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin-bottom: 32px;
+    position: relative;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    padding-left: 24px;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 7px;
+    width: 2px;
+    height: 90%;
+    background: var(--gold-gradient);
+}
+
+.timeline-step {
+    position: relative;
+}
+.timeline-dot {
+    position: absolute;
+    left: -24px;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    background: var(--gold-primary);
+    border: 3px solid var(--bg-dark);
+    border-radius: 50%;
+}
+.timeline-step-title {
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    color: var(--gold-light);
+    margin-bottom: 4px;
+}
+.timeline-step-text {
+    font-size: 0.85rem;
+    color: var(--text-light-muted);
+}
+
+/* --------------------------------------------------------------------------
+   10. PAGE 5 — PHOTO GALLERY (PRECIOUS MOMENTS)
+   -------------------------------------------------------------------------- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid var(--gold-border);
+    box-shadow: var(--shadow-soft);
+    background: #000;
+    aspect-ratio: 4 / 5;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--transition-smooth), opacity 0.6s ease;
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 50%, rgba(21, 17, 13, 0.85) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover .gallery-img {
+    transform: scale(1.08);
+}
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-caption {
+    color: var(--text-light);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.lightbox-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-content {
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lightbox-img {
+    max-width: 100%;
+    max-height: 75vh;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--gold-primary);
+    box-shadow: 0 0 40px rgba(0,0,0,0.8);
+}
+
+.lightbox-caption-text {
+    color: var(--gold-light);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-top: 16px;
+    text-align: center;
+}
+
+.lightbox-close-btn, .lightbox-prev-btn, .lightbox-next-btn {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid var(--gold-primary);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.lightbox-close-btn { top: 30px; right: 30px; }
+.lightbox-prev-btn { left: 30px; top: 50%; transform: translateY(-50%); }
+.lightbox-next-btn { right: 30px; top: 50%; transform: translateY(-50%); }
+
+.lightbox-close-btn:hover, .lightbox-prev-btn:hover, .lightbox-next-btn:hover {
+    background: var(--gold-primary);
+    color: #000;
+}
+
+/* --------------------------------------------------------------------------
+   11. PAGE 6 — RSVP SECTION
+   -------------------------------------------------------------------------- */
+.rsvp-card {
+    padding: 48px;
+    background: var(--bg-glass-light);
+    border: 1.5px solid var(--gold-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+}
+
+.rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 14px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(201, 164, 92, 0.4);
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 10px rgba(201, 164, 92, 0.3);
+}
+
+.radio-group {
+    display: flex;
+    gap: 24px;
+}
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+.radio-label input {
+    accent-color: var(--gold-primary);
+    width: 18px;
+    height: 18px;
+}
+
+.rsvp-buttons-row {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   12. PAGE 7 — CONTACT SECTION
+   -------------------------------------------------------------------------- */
+.contact-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+}
+
+.contact-card {
+    padding: 36px 24px;
+    text-align: center;
+    background: var(--bg-glass-light);
+    border: 1px solid var(--gold-border);
+    border-radius: var(--radius-md);
+}
+
+.contact-name {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.contact-phone-link {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gold-dark);
+    display: block;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+.contact-phone-link:hover {
+    color: var(--gold-primary);
+}
+
+/* --------------------------------------------------------------------------
+   13. PAGE 8 — GIFTS & WISHES SECTION
+   -------------------------------------------------------------------------- */
+.gifts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+    margin-top: 36px;
+}
+
+.gift-card {
+    padding: 36px 24px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--gold-border);
+    border-radius: var(--radius-md);
+}
+
+.gift-icon {
+    font-size: 2.2rem;
+    color: var(--gold-primary);
+    margin-bottom: 16px;
+}
+
+.gift-details-box {
+    background: rgba(201, 164, 92, 0.08);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    margin-top: 16px;
+    font-size: 0.88rem;
+    text-align: left;
+}
+
+/* --------------------------------------------------------------------------
+   14. PAGE 9 — FINAL THANK YOU SECTION
+   -------------------------------------------------------------------------- */
+.thankyou-section {
+    min-height: 90vh;
+    background: radial-gradient(circle at center, #201710 0%, #15110D 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.thankyou-card {
+    max-width: 800px;
+    padding: 60px 36px;
+}
+
+.thankyou-title {
+    font-size: 4rem;
+    letter-spacing: 0.15em;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.thankyou-sub {
+    font-size: 1.1rem;
+    letter-spacing: 0.25em;
+    color: var(--text-light-muted);
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.thankyou-blessing {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--gold-light);
+    margin: 32px 0;
+    font-style: italic;
+}
+
+.pulsing-heart {
+    font-size: 2.5rem;
+    color: var(--gold-primary);
+    display: inline-block;
+    animation: pulseHeart 1.8s infinite ease-in-out;
+}
+@keyframes pulseHeart {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.25); opacity: 1; filter: drop-shadow(0 0 15px var(--gold-primary)); }
+}
+
+/* --------------------------------------------------------------------------
+   15. FLOATING CONTROLS & UTILITIES
+   -------------------------------------------------------------------------- */
+
+/* Floating Audio Player Button */
+.audio-player-btn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 56px;
+    height: 56px;
+    background: var(--bg-dark);
+    border: 2px solid var(--gold-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-light);
+    cursor: pointer;
+    z-index: 990;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+.audio-player-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px var(--gold-primary);
+}
+.audio-player-btn.playing {
+    border-color: var(--gold-light);
+    animation: rotateGlow 6s linear infinite;
+}
+@keyframes rotateGlow {
+    0% { box-shadow: 0 0 15px var(--gold-primary); }
+    50% { box-shadow: 0 0 25px var(--gold-light); }
+    100% { box-shadow: 0 0 15px var(--gold-primary); }
+}
+
+/* Equalizer Animated Bars */
+.eq-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 18px;
+}
+.eq-bar {
+    width: 3px;
+    background: var(--gold-light);
+    border-radius: 2px;
+    height: 6px;
+    transition: height 0.2s ease;
+}
+.audio-player-btn.playing .eq-bar:nth-child(1) { animation: eqBar 0.8s infinite ease-in-out alternate; }
+.audio-player-btn.playing .eq-bar:nth-child(2) { animation: eqBar 1.2s infinite ease-in-out alternate 0.2s; }
+.audio-player-btn.playing .eq-bar:nth-child(3) { animation: eqBar 0.9s infinite ease-in-out alternate 0.4s; }
+
+@keyframes eqBar {
+    0% { height: 4px; }
+    100% { height: 18px; }
+}
+
+/* Floating Back To Top Button */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 32px;
+    left: 32px;
+    width: 48px;
+    height: 48px;
+    background: var(--bg-glass-dark);
+    border: 1px solid var(--gold-border);
+    border-radius: 50%;
+    color: var(--gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 990;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.back-to-top-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+.back-to-top-btn:hover {
+    background: var(--gold-primary);
+    color: #000;
+}
+
+/* Toast Notifications */
+.toast-notification {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--bg-dark);
+    color: var(--gold-light);
+    border: 1px solid var(--gold-primary);
+    padding: 12px 28px;
+    border-radius: var(--radius-full);
+    font-size: 0.88rem;
+    letter-spacing: 0.1em;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3000;
+    transition: all 0.3s var(--transition-smooth);
+}
+.toast-notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   16. MEDIA QUERIES & RESPONSIVE BREAKPOINTS
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+    .nav-links { display: none; }
+    .menu-toggle-btn { display: flex; }
+    .section-title { font-size: 2.2rem; }
+}
+
+@media (max-width: 600px) {
+    .section { padding: 60px 16px; }
+    .rsvp-card { padding: 24px 16px; }
+    .countdown-box { width: 75px; height: 85px; }
+    .countdown-val { font-size: 1.8rem; }
+    .audio-player-btn { bottom: 20px; right: 20px; width: 48px; height: 48px; }
+    .back-to-top-btn { bottom: 20px; left: 20px; width: 42px; height: 42px; }
+}
