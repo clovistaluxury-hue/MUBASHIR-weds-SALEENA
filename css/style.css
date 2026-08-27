@@ -178,6 +178,9 @@ button, input, select, textarea {
     object-position: center;
     pointer-events: none;
     z-index: 1;
+    image-rendering: -webkit-optimize-contrast;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 #intro-overlay {
@@ -2084,4 +2087,5 @@ button, input, select, textarea {
         font-size: 0.85rem !important;
     }
 }
+
 
