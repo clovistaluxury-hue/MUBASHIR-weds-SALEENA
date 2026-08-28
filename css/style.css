@@ -292,7 +292,7 @@ button, input, select, textarea {
 }
 
 /* --------------------------------------------------------------------------
-   SECTION 1 â€” HERO STILL IMAGE COVER (EXACT CONTINUATION)
+   SECTION 1 — HERO STILL IMAGE COVER (EXACT CONTINUATION)
    -------------------------------------------------------------------------- */
 .hero-still-section {
     position: relative;
@@ -753,7 +753,7 @@ button, input, select, textarea {
 }
 
 /* --------------------------------------------------------------------------
-   7. PAGE 2 â€” WEDDING DETAILS & EVENT CARDS
+   7. PAGE 2 — WEDDING DETAILS & EVENT CARDS
    -------------------------------------------------------------------------- */
 .events-grid {
     display: grid;
@@ -826,7 +826,7 @@ button, input, select, textarea {
 }
 
 /* --------------------------------------------------------------------------
-   8. PAGE 3 â€” VENUE & LOCATION
+   8. PAGE 3 — VENUE & LOCATION
    -------------------------------------------------------------------------- */
 .venue-cards-grid {
     display: grid;
@@ -892,7 +892,7 @@ button, input, select, textarea {
 }
 
 /* --------------------------------------------------------------------------
-   9. PAGE 4 â€” OUR STORY
+   9. PAGE 4 — OUR STORY
    -------------------------------------------------------------------------- */
 .story-wrapper {
     display: grid;
@@ -979,7 +979,7 @@ button, input, select, textarea {
 }
 
 /* --------------------------------------------------------------------------
-   10. PAGE 5 â€” PHOTO GALLERY (PRECIOUS MOMENTS)
+   10. PAGE 5 — PHOTO GALLERY (PRECIOUS MOMENTS)
    -------------------------------------------------------------------------- */
 .gallery-grid {
     display: grid;
@@ -1102,7 +1102,7 @@ button, input, select, textarea {
 }
 
 /* --------------------------------------------------------------------------
-   11. PAGE 6 â€” RSVP SECTION
+   11. PAGE 6 — RSVP SECTION
    -------------------------------------------------------------------------- */
 .rsvp-card {
     padding: 48px;
@@ -1172,7 +1172,7 @@ button, input, select, textarea {
 }
 
 /* --------------------------------------------------------------------------
-   12. PAGE 7 â€” CONTACT SECTION
+   12. PAGE 7 — CONTACT SECTION
    -------------------------------------------------------------------------- */
 .contact-cards-grid {
     display: grid;
@@ -1207,7 +1207,7 @@ button, input, select, textarea {
 }
 
 /* --------------------------------------------------------------------------
-   13. PAGE 8 â€” GIFTS & WISHES SECTION
+   13. PAGE 8 — GIFTS & WISHES SECTION
    -------------------------------------------------------------------------- */
 .gifts-grid {
     display: grid;
@@ -1240,7 +1240,7 @@ button, input, select, textarea {
 }
 
 /* --------------------------------------------------------------------------
-   14. PAGE 9 â€” FINAL THANK YOU SECTION
+   14. PAGE 9 — FINAL THANK YOU SECTION
    -------------------------------------------------------------------------- */
 .thankyou-section {
     min-height: 90vh;
@@ -1424,7 +1424,7 @@ button, input, select, textarea {
 }
 
 /* ----------------------------------------------------------
-   MOBILE EVENT & SCHEDULE — COMPACT SINGLE-VIEWPORT LAYOUT
+   MOBILE EVENT & SCHEDULE � COMPACT SINGLE-VIEWPORT LAYOUT
    Target: 375x812 / 390x844 / 393x873 / 414x896 (iPhones)
    Desktop is completely unchanged.
    ---------------------------------------------------------- */
@@ -1467,7 +1467,7 @@ button, input, select, textarea {
         border-bottom: none;
     }
     .events-grid .event-card:first-child::after {
-        content:  — ? —;
+        content:  � ? �;
         display: block;
         grid-column: 1 / -1;
         text-align: center;
@@ -1543,7 +1543,7 @@ button, input, select, textarea {
 }
 
 /* ----------------------------------------------------------
-   MOBILE VENUE & MAP SECTION — COMPACT SIZE
+   MOBILE VENUE & MAP SECTION � COMPACT SIZE
    ---------------------------------------------------------- */
 @media (max-width: 480px) {
 
@@ -1556,7 +1556,7 @@ button, input, select, textarea {
     #venue .section-subtitle { font-size: 0.68rem; }
     #venue .ornamental-divider { margin: 8px auto; }
 
-    /* Venue info cards grid — stack, compact padding */
+    /* Venue info cards grid � stack, compact padding */
     .venue-cards-grid {
         grid-template-columns: 1fr;
         gap: 10px;
@@ -1574,7 +1574,7 @@ button, input, select, textarea {
         font-size: 0.65rem !important;
     }
 
-    /* Map iframe — shorter on mobile */
+    /* Map iframe � shorter on mobile */
     .map-wrapper {
         height: 200px;
         margin-bottom: 14px;
@@ -1594,7 +1594,7 @@ button, input, select, textarea {
         gap: 5px;
     }
 
-    /* Info items grid — 2 columns on mobile */
+    /* Info items grid � 2 columns on mobile */
     .info-items-grid {
         grid-template-columns: 1fr 1fr;
         gap: 10px;
@@ -1914,7 +1914,7 @@ button, input, select, textarea {
 }
 
 /* ----------------------------------------------------------
-   NORMAL GALLERY GRID — VIDEO PLAY BADGE OVERLAY
+   NORMAL GALLERY GRID � VIDEO PLAY BADGE OVERLAY
    ---------------------------------------------------------- */
 .gallery-video-badge {
     position: absolute;
@@ -1941,7 +1941,7 @@ button, input, select, textarea {
 }
 
 /* ----------------------------------------------------------
-   GALLERY GRID — 2 IMAGES PER FRAME / ROW (DESKTOP & MOBILE)
+   GALLERY GRID � 2 IMAGES PER FRAME / ROW (DESKTOP & MOBILE)
    ---------------------------------------------------------- */
 .gallery-grid {
     grid-template-columns: repeat(2, 1fr) !important;
@@ -2087,190 +2087,5 @@ button, input, select, textarea {
         font-size: 0.85rem !important;
     }
 }
-
-/* ==========================================================================
-   FINAL DESIGNER CREDIT SECTION
-   ========================================================================== */
-.final-credit-section {
-    background-color: #F8F7F5;
-    padding: 50px 20px 55px;
-    text-align: center;
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    box-sizing: border-box;
-    border-top: 1px solid rgba(201, 164, 92, 0.2);
-}
-
-.final-credit-container {
-    max-width: 540px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Thin decorative gold divider near top with small heart icon */
-.final-credit-divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    width: 160px;
-    margin-bottom: 20px;
-}
-
-.final-credit-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(201, 164, 92, 0.6), transparent);
-}
-
-.final-credit-heart {
-    color: #C28D75;
-    font-size: 0.85rem;
-    display: inline-block;
-    animation: creditHeartPulse 3s infinite ease-in-out;
-}
-
-@keyframes creditHeartPulse {
-    0%, 100% { transform: scale(1); opacity: 0.85; }
-    50% { transform: scale(1.15); opacity: 1; }
-}
-
-/* Elegant serif text */
-.final-credit-title {
-    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-    font-size: 1.15rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    color: #4A3E35;
-    margin-bottom: 4px;
-    line-height: 1.4;
-}
-
-.final-credit-by {
-    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-    font-style: italic;
-    font-size: 1.05rem;
-    color: #7A6C60;
-    margin-bottom: 8px;
-    font-weight: 400;
-}
-
-/* Faheem Akber visual highlight - elegant script font & subtle gold accent */
-.final-credit-name {
-    font-family: 'MonteCarlo', 'Great Vibes', 'Pinyon Script', cursive;
-    font-size: 3.2rem;
-    font-weight: 400;
-    color: #B38728;
-    background: linear-gradient(135deg, #B38728 0%, #D4AF37 40%, #9A752C 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 4px 0 22px;
-    line-height: 1.25;
-    padding: 0 10px;
-    letter-spacing: 0.02em;
-    text-shadow: 0 2px 10px rgba(201, 164, 92, 0.12);
-}
-
-/* Contact row */
-.final-credit-contact {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 4px;
-    flex-wrap: wrap;
-}
-
-/* Small elegant phone icon - dusty rose/pink tone */
-.final-credit-link.contact-phone {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: rgba(194, 141, 117, 0.14);
-    color: #C28D75;
-    font-size: 0.88rem;
-    text-decoration: none;
-    transition: all 0.25s ease;
-}
-
-.final-credit-link.contact-phone:hover {
-    transform: translateY(-2px) scale(1.08);
-    background-color: rgba(194, 141, 117, 0.28);
-    color: #AB755E;
-}
-
-/* Official WhatsApp-style green icon */
-.final-credit-link.contact-whatsapp {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    color: #25D366;
-    font-size: 1.2rem;
-    text-decoration: none;
-    transition: all 0.25s ease;
-}
-
-.final-credit-link.contact-whatsapp .whatsapp-label {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #25D366;
-}
-
-.final-credit-link.contact-whatsapp:hover {
-    transform: translateY(-2px) scale(1.05);
-    color: #20BA5A;
-}
-
-.final-credit-link.contact-whatsapp:hover .whatsapp-label {
-    color: #20BA5A;
-}
-
-/* Phone number display */
-.final-credit-number {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #4A3E35;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.final-credit-number:hover {
-    color: #9A752C;
-}
-
-/* Responsive adjustment for small mobile screens (9:16) */
-@media (max-width: 480px) {
-    .final-credit-section {
-        padding: 38px 16px 42px;
-    }
-    .final-credit-title {
-        font-size: 1.05rem;
-    }
-    .final-credit-by {
-        font-size: 0.95rem;
-    }
-    .final-credit-name {
-        font-size: 2.75rem;
-        margin: 2px 0 18px;
-    }
-    .final-credit-contact {
-        gap: 12px;
-    }
-    .final-credit-number {
-        font-size: 0.9rem;
-    }
-}
-
 
 
