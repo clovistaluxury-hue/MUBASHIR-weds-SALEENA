@@ -1,7 +1,23 @@
 /**
- * WEDDING INVITATION CONFIGURATION
- * Single source of truth for all names, dates, venues, countdown, maps links, and contact details.
+ * PHOTO GALLERY SELECTION SYSTEM
+ * Specify which image filenames or paths from the newly added folder ('photos gallery/last')
+ * or assets folder should appear in the Photo Gallery.
+ * 
+ * ONLY the images listed in this array will be rendered in the Photo Gallery.
+ * All previous gallery images have been removed.
  */
+window.PHOTO_GALLERY_IMAGES = [
+    "WhatsApp Image 2026-08-28 at 3.48.51 PM.jpeg",
+    "WhatsApp Image 2026-08-28 at 3.49.14 PM.jpeg",
+    "WhatsApp Image 2026-08-28 at 3.49.16 PM.jpeg",
+    "WhatsApp Image 2026-08-28 at 3.49.17 PM (1).jpeg",
+    "WhatsApp Image 2026-08-28 at 3.49.17 PM.jpeg",
+    "WhatsApp Image 2026-08-28 at 3.49.18 PM (1).jpeg",
+    "WhatsApp Image 2026-08-28 at 3.49.18 PM.jpeg",
+    "WhatsApp Image 2026-08-28 at 3.49.19 PM.jpeg",
+    "WhatsApp Image 2026-08-28 at 3.49.21 PM.jpeg",
+    "WhatsApp Image 2026-08-28 at 3.49.42 PM.jpeg"
+];
 
 window.WEDDING_CONFIG = {
     // INTRO CINEMATIC VIDEO & HERO STILL IMAGE CONFIGURATION
@@ -132,21 +148,21 @@ window.WEDDING_CONFIG = {
         ]
     },
 
-    // GALLERY — Images only
-    gallery: [
-        {
-            type: "image",
-            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.46.21_PM.jpeg",
-            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.46.21_PM.jpeg",
-            caption: "Together in Grace"
-        },
-        {
-            type: "image",
-            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.57.45_PM.jpeg",
-            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.57.45_PM.jpeg",
-            caption: "Precious Moments"
-        }
-    ],
+    // GALLERY — Populated dynamically from window.PHOTO_GALLERY_IMAGES
+    get gallery() {
+        return (window.PHOTO_GALLERY_IMAGES || []).map(item => {
+            if (typeof item === 'string') {
+                const srcPath = item.includes('/') ? item : `photos gallery/last/${item}`;
+                return {
+                    type: 'image',
+                    src: srcPath,
+                    thumb: srcPath,
+                    caption: ''
+                };
+            }
+            return item;
+        });
+    },
 
     // GIFTS CONFIGURATION
     gifts: {

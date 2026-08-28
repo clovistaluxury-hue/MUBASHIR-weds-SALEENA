@@ -271,17 +271,21 @@ function renderGalleryGrid(gallery) {
 
     // Filter to retain ONLY image assets
     const imagesOnly = (gallery || []).filter(item => {
+        const src = typeof item === 'string' ? item : item.src;
         if (item.type === 'video') return false;
-        if (item.src && /\.(mp4|mov|webm|m4v)$/i.test(item.src)) return false;
+        if (src && /\.(mp4|mov|webm|m4v)$/i.test(src)) return false;
         return true;
     });
 
     grid.innerHTML = imagesOnly.map((item, index) => {
+        const rawSrc = typeof item === 'string' ? item : (item.thumb || item.src);
+        const encodedSrc = encodeURI(rawSrc);
+        const caption = typeof item === 'string' ? '' : (item.caption || '');
         return `
             <div class="gallery-item" onclick="openLightbox(${index})">
-                <img src="${item.thumb || item.src}" alt="${item.caption || 'Wedding Photo'}" class="gallery-img" loading="lazy">
+                <img src="${encodedSrc}" alt="${caption || 'Wedding Photo'}" class="gallery-img" loading="lazy">
                 <div class="gallery-overlay">
-                    <div class="gallery-caption">${item.caption || ''}</div>
+                    <div class="gallery-caption">${caption}</div>
                 </div>
             </div>
         `;
@@ -560,8 +564,9 @@ let currentLightboxIndex = 0;
 
 function initLightbox(galleryItems) {
     currentGalleryItems = (galleryItems || []).filter(item => {
+        const src = typeof item === 'string' ? item : item.src;
         if (item.type === 'video') return false;
-        if (item.src && /\.(mp4|mov|webm|m4v)$/i.test(item.src)) return false;
+        if (src && /\.(mp4|mov|webm|m4v)$/i.test(src)) return false;
         return true;
     });
 
@@ -612,14 +617,18 @@ function updateLightboxContent() {
 
     if (!container || !item) return;
 
-    if (item.type === 'video') {
-        container.innerHTML = `<video src="${item.src}" controls autoplay playsinline style="max-width:90vw; max-height:78vh; border-radius:8px; box-shadow:0 0 40px rgba(0,0,0,0.8); border:1px solid var(--gold-primary);"></video>`;
+    const rawSrc = typeof item === 'string' ? item : item.src;
+    const encodedSrc = encodeURI(rawSrc);
+    const itemCaption = typeof item === 'string' ? '' : (item.caption || '');
+
+    if (item.type === 'video' || (rawSrc && /\.(mp4|mov|webm|m4v)$/i.test(rawSrc))) {
+        container.innerHTML = `<video src="${encodedSrc}" controls autoplay playsinline style="max-width:90vw; max-height:78vh; border-radius:8px; box-shadow:0 0 40px rgba(0,0,0,0.8); border:1px solid var(--gold-primary);"></video>`;
     } else {
-        container.innerHTML = `<img id="lightbox-img" src="${item.src}" alt="${item.caption || 'Gallery Image'}" class="lightbox-img" style="max-width:90vw; max-height:78vh; object-fit:contain; border-radius:8px; border:1px solid var(--gold-primary); box-shadow:0 0 40px rgba(0,0,0,0.8);">`;
+        container.innerHTML = `<img id="lightbox-img" src="${encodedSrc}" alt="${itemCaption || 'Gallery Image'}" class="lightbox-img" style="max-width:90vw; max-height:78vh; object-fit:contain; border-radius:8px; border:1px solid var(--gold-primary); box-shadow:0 0 40px rgba(0,0,0,0.8);">`;
     }
 
     if (caption) {
-        caption.textContent = item.caption || '';
+        caption.textContent = itemCaption;
     }
 }
 
