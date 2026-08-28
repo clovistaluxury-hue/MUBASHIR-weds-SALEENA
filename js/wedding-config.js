@@ -7,9 +7,10 @@
  * All previous gallery images have been removed.
  */
 window.PHOTO_GALLERY_IMAGES = [
+    "WhatsApp Image 2026-08-28 at 3.49.15 PM.jpeg",
+    "WhatsApp Image 2026-08-28 at 3.49.16 PM.jpeg",
     "WhatsApp Image 2026-08-28 at 3.48.51 PM.jpeg",
     "WhatsApp Image 2026-08-28 at 3.49.14 PM.jpeg",
-    "WhatsApp Image 2026-08-28 at 3.49.16 PM.jpeg",
     "WhatsApp Image 2026-08-28 at 3.49.17 PM (1).jpeg",
     "WhatsApp Image 2026-08-28 at 3.49.17 PM.jpeg",
     "WhatsApp Image 2026-08-28 at 3.49.18 PM (1).jpeg",
