@@ -7,17 +7,19 @@
  * All previous gallery images have been removed.
  */
 window.PHOTO_GALLERY_IMAGES = [
-    "WhatsApp Image 2026-08-28 at 3.49.15 PM.jpeg",
-    "WhatsApp Image 2026-08-28 at 3.49.16 PM.jpeg",
-    "WhatsApp Image 2026-08-28 at 3.48.51 PM.jpeg",
-    "WhatsApp Image 2026-08-28 at 3.49.14 PM.jpeg",
-    "WhatsApp Image 2026-08-28 at 3.49.17 PM (1).jpeg",
-    "WhatsApp Image 2026-08-28 at 3.49.17 PM.jpeg",
-    "WhatsApp Image 2026-08-28 at 3.49.18 PM (1).jpeg",
-    "WhatsApp Image 2026-08-28 at 3.49.18 PM.jpeg",
-    "WhatsApp Image 2026-08-28 at 3.49.19 PM.jpeg",
-    "WhatsApp Image 2026-08-28 at 3.49.21 PM.jpeg",
-    "WhatsApp Image 2026-08-28 at 3.49.42 PM.jpeg"
+    "WhatsApp Image 2026-08-28 at 7.26.37 PM.jpeg",
+    "WhatsApp Image 2026-08-28 at 7.26.37 PM (1).jpeg",
+    "WhatsApp Image 2026-08-28 at 7.26.38 PM.jpeg",
+    "WhatsApp Image 2026-08-28 at 7.26.41 PM.jpeg",
+    "WhatsApp Image 2026-08-28 at 7.26.41 PM (1).jpeg",
+    "WhatsApp Image 2026-08-28 at 7.26.42 PM.jpeg",
+    "WhatsApp Image 2026-08-28 at 7.26.42 PM (1).jpeg",
+    "WhatsApp Image 2026-08-28 at 7.26.42 PM (2).jpeg",
+    "WhatsApp Image 2026-08-28 at 7.26.43 PM.jpeg",
+    "WhatsApp Image 2026-08-28 at 7.26.43 PM (1).jpeg",
+    "WhatsApp Image 2026-08-28 at 7.26.43 PM (2).jpeg",
+    "WhatsApp Image 2026-08-28 at 7.26.44 PM.jpeg",
+    "WhatsApp Image 2026-08-28 at 7.26.44 PM (1).jpeg"
 ];
 
 window.WEDDING_CONFIG = {
@@ -153,7 +155,7 @@ window.WEDDING_CONFIG = {
     get gallery() {
         return (window.PHOTO_GALLERY_IMAGES || []).map(item => {
             if (typeof item === 'string') {
-                const srcPath = item.includes('/') ? item : `photos gallery/last/${item}`;
+                const srcPath = item.includes('/') ? item : `photos gallery/${item}`;
                 return {
                     type: 'image',
                     src: srcPath,
