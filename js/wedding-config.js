@@ -136,15 +136,75 @@ window.WEDDING_CONFIG = {
     gallery: [
         {
             type: "image",
-            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.46.21_PM.jpeg",
-            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.46.21_PM.jpeg",
+            src: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.48.51_PM.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.48.51_PM.jpeg",
             caption: "Together in Grace"
         },
         {
             type: "image",
-            src: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.57.45_PM.jpeg",
-            thumb: "assets/gallery/WhatsApp_Image_2026-08-27_at_1.57.45_PM.jpeg",
+            src: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.14_PM.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.14_PM.jpeg",
             caption: "Precious Moments"
+        },
+        {
+            type: "image",
+            src: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.15_PM.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.15_PM.jpeg",
+            caption: "Joyful Celebrations"
+        },
+        {
+            type: "image",
+            src: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.15_PM_1.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.15_PM_1.jpeg",
+            caption: "Blessed Beginning"
+        },
+        {
+            type: "image",
+            src: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.16_PM.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.16_PM.jpeg",
+            caption: "Cherished Smiles"
+        },
+        {
+            type: "image",
+            src: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.17_PM.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.17_PM.jpeg",
+            caption: "Heartfelt Memories"
+        },
+        {
+            type: "image",
+            src: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.17_PM_1.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.17_PM_1.jpeg",
+            caption: "Timeless Love"
+        },
+        {
+            type: "image",
+            src: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.18_PM.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.18_PM.jpeg",
+            caption: "Golden Moments"
+        },
+        {
+            type: "image",
+            src: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.18_PM_1.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.18_PM_1.jpeg",
+            caption: "Forever & Always"
+        },
+        {
+            type: "image",
+            src: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.19_PM.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.19_PM.jpeg",
+            caption: "Love & Blessings"
+        },
+        {
+            type: "image",
+            src: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.21_PM.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.21_PM.jpeg",
+            caption: "Elegant Reflections"
+        },
+        {
+            type: "image",
+            src: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.42_PM.jpeg",
+            thumb: "assets/gallery/WhatsApp_Image_2026-08-28_at_3.49.42_PM.jpeg",
+            caption: "A Journey Together"
         }
     ],
 
